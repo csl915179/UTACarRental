@@ -19,6 +19,16 @@
     <string name="button_send">Send</string>
     <string name="username">Enter your username</string>
     <string name="password">Enter your password</string>
+    <string name="UTAID">UTAID</string>
+    <string name="contact">Phone or Email</string>
+    <string name="lastname">Last Name</string>
+    <string name="firstname">First Name</string>
+    <string name="street">Street Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="ismember">Arlington auto club member</string>
+
     <string name="login">Log In</string>
     <string name="Register">Register</string>
 

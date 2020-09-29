@@ -124,7 +124,11 @@ public class UserHomepage extends AppCompatActivity {
     }
 
     public void changePassword(MenuItem item){
-        //更改intent的目的地并讲flags设为不会销毁activity
+        //更改intent的目的地和Flags
+        //Intent intent = new Intent();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
         intent.setClass(this,ChangePasswordScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

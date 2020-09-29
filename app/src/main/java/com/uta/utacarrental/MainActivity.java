@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteStudioService.instance().start(this);
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         sharedpreferences = getSharedPreferences("Login", Context.MODE_PRIVATE);
 
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
             setTitle("UTA Car Rental");
         }
-
 
 
     }

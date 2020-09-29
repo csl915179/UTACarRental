@@ -53,7 +53,6 @@ public class ChangePasswordScreen extends AppCompatActivity {
                 SharedPreferences.Editor session = sharedpreferences.edit();
                 session.clear();
                 session.commit();
-
                 //清空activity，无法再返回到此界面
                 Intent intent = new Intent();
                 intent.setClass(this,MainActivity.class);
