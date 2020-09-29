@@ -1,6 +1,8 @@
 package com.uta.utacarrental;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +26,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
-        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
     }
 
     public void updatePassword(View view){
@@ -45,6 +47,12 @@ public class ChangePasswordScreen extends AppCompatActivity {
                 //更新数据库中的密码
                 user.setPassword(newPassword);
                 user.updateAll("username = ? and password = ?",user.getUsername(),oldPassword);
+
+                //更改密码后清空保存的登陆信息
+                SharedPreferences sharedpreferences = getSharedPreferences("Login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor session = sharedpreferences.edit();
+                session.clear();
+                session.commit();
                 //清空activity，无法再返回到此界面
                 Intent intent = new Intent();
                 intent.setClass(this,MainActivity.class);
