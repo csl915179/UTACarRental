@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("UTA Car Rental");
 
-
 //        User user1 = new User();
 //        user1.setName("dzl");
 //        user1.setPassword("123");

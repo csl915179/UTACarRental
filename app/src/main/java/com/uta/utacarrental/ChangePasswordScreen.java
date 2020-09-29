@@ -33,7 +33,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
         String newPassword=((EditText) findViewById(R.id.newpassword)).getText().toString().trim();
         String confirmNewPassword=((EditText) findViewById(R.id.confirmnewpassword)).getText().toString().trim();
 
-        List<User> userList = LitePal.where("name = ? and password = ?",user.getUsername(),oldPassword).find(User.class);
+        List<User> userList = LitePal.where("username = ? and password = ?",user.getUsername(),oldPassword).find(User.class);
         if (oldPassword.length() != 0 && newPassword.length() != 0 && confirmNewPassword.length() != 0){
             if (oldPassword.equals(newPassword)){
                 Toast.makeText(getApplicationContext(), "The new password is the same as the old one.", Toast.LENGTH_SHORT).show();
@@ -44,7 +44,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
             }else {
                 //更新数据库中的密码
                 user.setPassword(newPassword);
-                user.updateAll("name = ? and password = ?",user.getUsername(),oldPassword);
+                user.updateAll("username = ? and password = ?",user.getUsername(),oldPassword);
                 //清空activity，无法再返回到此界面
                 Intent intent = new Intent();
                 intent.setClass(this,MainActivity.class);

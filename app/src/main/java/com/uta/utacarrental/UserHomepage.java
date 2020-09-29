@@ -117,7 +117,7 @@ public class UserHomepage extends AppCompatActivity {
 
     public void changePassword(MenuItem item){
         //更改intent的目的地和Flags
-        Intent intent = new Intent();
+        //Intent intent = new Intent();
         Bundle bundle=new Bundle();
         bundle.putSerializable("user", user);
         intent.putExtras(bundle);
