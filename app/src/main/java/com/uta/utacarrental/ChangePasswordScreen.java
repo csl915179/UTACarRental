@@ -1,6 +1,8 @@
 package com.uta.utacarrental;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +26,7 @@ public class ChangePasswordScreen extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
-        System.out.println(user.getName());
+        System.out.println(user.getPassword());
     }
 
     public void updatePassword(View view){
@@ -33,9 +35,9 @@ public class ChangePasswordScreen extends AppCompatActivity {
         String newPassword=((EditText) findViewById(R.id.newpassword)).getText().toString().trim();
         String confirmNewPassword=((EditText) findViewById(R.id.confirmnewpassword)).getText().toString().trim();
 
-        List<User> userList = LitePal.where("name = ? and password = ?",user.getName(),oldPassword).find(User.class);
-                if (oldPassword.length() != 0 && newPassword.length() != 0 && confirmNewPassword.length() != 0){
-                    if (oldPassword.equals(newPassword)){
+        List<User> userList = LitePal.where("username = ? and password = ?",user.getUsername(),oldPassword).find(User.class);
+        if (oldPassword.length() != 0 && newPassword.length() != 0 && confirmNewPassword.length() != 0){
+            if (oldPassword.equals(newPassword)){
                 Toast.makeText(getApplicationContext(), "The new password is the same as the old one.", Toast.LENGTH_SHORT).show();
             }else if(!newPassword.equals(confirmNewPassword)){
                 Toast.makeText(getApplicationContext(), "Password confirmation doesn't match the new password", Toast.LENGTH_SHORT).show();
@@ -44,7 +46,14 @@ public class ChangePasswordScreen extends AppCompatActivity {
             }else {
                 //更新数据库中的密码
                 user.setPassword(newPassword);
-                user.updateAll("name = ? and password = ?",user.getName(),oldPassword);
+                user.updateAll("username = ? and password = ?",user.getUsername(),oldPassword);
+
+                //更改密码后清空保存的登陆信息
+                SharedPreferences sharedpreferences = getSharedPreferences("Login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor session = sharedpreferences.edit();
+                session.clear();
+                session.commit();
+
                 //清空activity，无法再返回到此界面
                 Intent intent = new Intent();
                 intent.setClass(this,MainActivity.class);

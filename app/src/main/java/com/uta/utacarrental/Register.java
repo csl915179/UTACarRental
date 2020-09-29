@@ -31,7 +31,7 @@ public class Register extends AppCompatActivity {
 
         if (username.length() != 0 && password.length() != 0){
             User user = new User();
-            user.setName(username);
+            user.setUsername(username);
             user.setPassword(password);
             user.setRole(role);
 

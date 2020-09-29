@@ -34,4 +34,6 @@ dependencies {
 
     implementation 'org.litepal.guolindev:core:3.2.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    //用于连接SQLiteStudio
+    implementation files('libs/SQLiteStudioRemote.jar')
 }

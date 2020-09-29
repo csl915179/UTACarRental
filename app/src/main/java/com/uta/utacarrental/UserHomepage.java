@@ -1,6 +1,8 @@
 package com.uta.utacarrental;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -22,7 +24,7 @@ public class UserHomepage extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    Intent intent = new Intent();
+    Intent intent;
     User user;
 
     @Override
@@ -52,7 +54,7 @@ public class UserHomepage extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Intent intent = this.getIntent();
+        intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
 
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -81,7 +83,7 @@ public class UserHomepage extends AppCompatActivity {
                     case DrawerLayout.STATE_SETTLING:
                         //设置状态
                         System.out.println("设置");
-                        ((TextView) findViewById(R.id.username)).setText(user.getName());
+                        ((TextView) findViewById(R.id.username)).setText(user.getUsername());
                         ((TextView) findViewById(R.id.role)).setText(user.getRole());
                         break;
                     case DrawerLayout.STATE_IDLE:
@@ -107,20 +109,22 @@ public class UserHomepage extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     public void logOut(MenuItem item){
-        //Intent intent=new Intent(this,MainActivity.class);
-        Intent intent = new Intent();
+        //注销时清空保存的登陆信息
+        SharedPreferences sharedpreferences = getSharedPreferences("Login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor session = sharedpreferences.edit();
+        session.clear();
+        session.commit();
+
+        //更改intent的目的地，销毁activity
         intent.setClass(this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     public void changePassword(MenuItem item){
-        //更改intent的目的地和Flags
-        Intent intent = new Intent();
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("user", user);
-        intent.putExtras(bundle);
+        //更改intent的目的地并讲flags设为不会销毁activity
         intent.setClass(this,ChangePasswordScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
