@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (username.length() != 0 && password.length() != 0){
-            List<User> userList = LitePal.where("name = ? and password = ?",username,password).find(User.class);
+            List<User> userList = LitePal.where("username = ? and password = ?",username,password).find(User.class);
             List<User> all_user = LitePal.findAll(User.class);
             if(userList.isEmpty()){
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();

@@ -81,7 +81,7 @@ public class UserHomepage extends AppCompatActivity {
                     case DrawerLayout.STATE_SETTLING:
                         //设置状态
                         System.out.println("设置");
-                        ((TextView) findViewById(R.id.username)).setText(user.getName());
+                        ((TextView) findViewById(R.id.username)).setText(user.getUsername());
                         ((TextView) findViewById(R.id.role)).setText(user.getRole());
                         break;
                     case DrawerLayout.STATE_IDLE:
