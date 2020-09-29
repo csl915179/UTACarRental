@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SQLiteStudioService.instance().start(this);
 
         setTitle("UTA Car Rental");
 
