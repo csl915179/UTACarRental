@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 User user = userList.get(0);
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("user", user);//序列化
-                System.out.println(user.getName());
+                System.out.println(user.getUsername());
                 Intent intent = new Intent(this, UserHomepage.class);
                 intent.putExtras(bundle);
                 //清空activity，无法再返回到此界面
