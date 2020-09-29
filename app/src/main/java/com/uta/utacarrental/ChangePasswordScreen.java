@@ -34,8 +34,8 @@ public class ChangePasswordScreen extends AppCompatActivity {
         String confirmNewPassword=((EditText) findViewById(R.id.confirmnewpassword)).getText().toString().trim();
 
         List<User> userList = LitePal.where("name = ? and password = ?",user.getName(),oldPassword).find(User.class);
-        if (oldPassword.length() != 0 && newPassword.length() != 0 && confirmNewPassword.length() != 0){
-            if (oldPassword.equals(newPassword)){
+                if (oldPassword.length() != 0 && newPassword.length() != 0 && confirmNewPassword.length() != 0){
+                    if (oldPassword.equals(newPassword)){
                 Toast.makeText(getApplicationContext(), "The new password is the same as the old one.", Toast.LENGTH_SHORT).show();
             }else if(!newPassword.equals(confirmNewPassword)){
                 Toast.makeText(getApplicationContext(), "Password confirmation doesn't match the new password", Toast.LENGTH_SHORT).show();
