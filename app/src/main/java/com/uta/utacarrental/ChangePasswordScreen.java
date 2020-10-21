@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.uta.utacarrental.database.User;
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
 

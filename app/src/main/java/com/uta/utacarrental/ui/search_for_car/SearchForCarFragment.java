@@ -1,4 +1,4 @@
-package com.uta.utacarrental.ui.tools;
+package com.uta.utacarrental.ui.search_for_car;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,17 +12,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.uta.utacarrental.R;
 
-public class ToolsFragment extends Fragment {
+public class SearchForCarFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private SearchForCarViewModel searchForCarViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        searchForCarViewModel =
+                ViewModelProviders.of(this).get(SearchForCarViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_search_car, container, false);
+        final TextView textView = root.findViewById(R.id.text_search_car);
+        searchForCarViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

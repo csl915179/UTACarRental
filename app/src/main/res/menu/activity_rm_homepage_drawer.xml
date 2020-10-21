@@ -13,6 +13,9 @@
         <item
                 android:id="@+id/nav_search_car"
                 android:title="Search for Car"/>
+        <item
+                android:id="@+id/nav_view_available_car"
+                android:title="View Available Car"/>
     </group>
 
 <!--    <item android:title="Communicate">-->

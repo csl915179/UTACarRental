@@ -3,14 +3,13 @@ package com.uta.utacarrental;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.service.autofill.AutofillService;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import org.litepal.LitePal;
+import com.uta.utacarrental.database.User;
 import org.litepal.tablemanager.Connector;
 
 public class Register extends AppCompatActivity {
@@ -29,7 +28,7 @@ public class Register extends AppCompatActivity {
         String username=((EditText) findViewById(R.id.username)).getText().toString().trim();
         String password=((EditText) findViewById(R.id.password)).getText().toString().trim();
         String role = (String) ((Spinner) findViewById(R.id.role)).getSelectedItem();
-        String UTAID=((EditText) findViewById(R.id.password)).getText().toString().trim();
+        String UTAID=((EditText) findViewById(R.id.UTAID)).getText().toString().trim();
         String phoneoremail=((EditText) findViewById(R.id.phoneoremail)).getText().toString().trim();
         String lastname=((EditText) findViewById(R.id.lastname)).getText().toString().trim();
         String firstname=((EditText) findViewById(R.id.firstname)).getText().toString().trim();

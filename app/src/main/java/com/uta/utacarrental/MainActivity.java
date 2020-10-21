@@ -9,13 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.uta.utacarrental.database.User;
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 import java.util.List;
-
-import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "UTA Car Rental System";
@@ -75,7 +74,14 @@ public class MainActivity extends AppCompatActivity {
         //传递user对象
         Bundle bundle=new Bundle();
         bundle.putSerializable("user", user);//序列化
-        Intent intent = new Intent(this, UserHomepage.class);
+        Intent intent = new Intent();
+        if (user.getRole().equals("user")) {
+             intent = new Intent(this, UserHomepage.class);
+        }else if (user.getRole().equals("rental manager")){
+            intent = new Intent(this, RMHomepage.class);
+        }else{
+            intent = new Intent(this, AdminHomepage.class);
+        }
         intent.putExtras(bundle);
         //清空activity，无法再返回到此界面
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

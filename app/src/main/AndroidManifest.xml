@@ -15,8 +15,16 @@
         <activity
                 android:name=".UserHomepage"
                 android:label="@string/title_activity_user_homepage"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+                android:name=".RMHomepage"
+                android:label="RMHomepage"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".AdminHomepage"
+                android:label="AdminHomepage"
+                android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,6 +40,7 @@
         <activity
                 android:name=".DisplayMessageActivity"
                 android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

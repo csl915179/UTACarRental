@@ -1,16 +1,16 @@
-package com.uta.utacarrental.ui.gallery;
+package com.uta.utacarrental.ui.reservation;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class ReservationViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public ReservationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is reservation fragment");
     }
 
     public LiveData<String> getText() {

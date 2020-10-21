@@ -1,4 +1,4 @@
-package com.uta.utacarrental;
+package com.uta.utacarrental.database;
 
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
@@ -18,7 +18,7 @@ public class User extends LitePalSupport implements Serializable {
     private String city;
     private String state;
     private String zipcode;
-    private Boolean ismember;
+    private boolean ismember;
 
 
 
@@ -108,7 +108,7 @@ public class User extends LitePalSupport implements Serializable {
         this.zipcode = zipcode;
     }
 
-    public Boolean getIsmember() {
+    public boolean getIsmember() {
         return ismember;
     }
 

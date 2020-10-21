@@ -15,12 +15,12 @@
             android:layout_height="match_parent"/>
 
     <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view_user"
+            android:id="@+id/nav_view_admin"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_user_homepage"
-            app:menu="@menu/activity_user_homepage_drawer"/>
+            app:menu="@menu/activity_admin_homepage_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

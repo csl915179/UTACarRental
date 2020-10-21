@@ -3,31 +3,35 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/mobile_navigation"
-            app:startDestination="@+id/nav_home">
+            app:startDestination="@+id/nav_profile">
 
     <fragment
-            android:id="@+id/nav_home"
-            android:name="com.uta.utacarrental.ui.home.HomeFragment"
-            android:label="@string/menu_home"
-            tools:layout="@layout/fragment_home"/>
+            android:id="@+id/nav_reservation"
+            android:name="com.uta.utacarrental.ui.reservation.ReservationFragment"
+            android:label="Reservation"
+            tools:layout="@layout/fragment_reservation"/>
+    <fragment
+            android:id="@+id/nav_search_user"
+            android:name="com.uta.utacarrental.ui.search_for_user.SearchForUserFragment"
+            android:label="Search for User"
+            tools:layout="@layout/fragment_search_user"/>
+    <fragment
+            android:id="@+id/nav_profile"
+            android:name="com.uta.utacarrental.ui.profile.ProfileFragment"
+            android:label="@string/menu_profile"
+            tools:layout="@layout/fragment_profile"/>
 
     <fragment
-            android:id="@+id/nav_gallery"
-            android:name="com.uta.utacarrental.ui.gallery.GalleryFragment"
-            android:label="@string/menu_gallery"
-            tools:layout="@layout/fragment_gallery"/>
+            android:id="@+id/nav_search_car"
+            android:name="com.uta.utacarrental.ui.search_for_car.SearchForCarFragment"
+            android:label="Search for Car"
+            tools:layout="@layout/fragment_search_car"/>
 
     <fragment
-            android:id="@+id/nav_slideshow"
-            android:name="com.uta.utacarrental.ui.slideshow.SlideshowFragment"
-            android:label="@string/menu_slideshow"
-            tools:layout="@layout/fragment_slideshow"/>
-
-    <fragment
-            android:id="@+id/nav_tools"
-            android:name="com.uta.utacarrental.ui.tools.ToolsFragment"
-            android:label="@string/menu_tools"
-            tools:layout="@layout/fragment_tools"/>
+            android:id="@+id/nav_view_available_car"
+            android:name="com.uta.utacarrental.ui.view_available_car.ViewAvailableCarFragment"
+            android:label="View Available Car"
+            tools:layout="@layout/fragment_view_available_car"/>
 
     <fragment
             android:id="@+id/nav_share"
