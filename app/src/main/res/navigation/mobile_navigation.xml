@@ -7,41 +7,41 @@
 
     <fragment
             android:id="@+id/nav_reservation"
-            android:name="com.uta.utacarrental.ui.reservation.ReservationFragment"
+            android:name="com.uta.utacarrental.view.reservation.ReservationFragment"
             android:label="Reservation"
             tools:layout="@layout/fragment_reservation"/>
     <fragment
             android:id="@+id/nav_search_user"
-            android:name="com.uta.utacarrental.ui.search_for_user.SearchForUserFragment"
+            android:name="com.uta.utacarrental.view.search_for_user.SearchForUserFragment"
             android:label="Search for User"
             tools:layout="@layout/fragment_search_user"/>
     <fragment
             android:id="@+id/nav_profile"
-            android:name="com.uta.utacarrental.ui.profile.ProfileFragment"
+            android:name="com.uta.utacarrental.view.profile.ProfileFragment"
             android:label="@string/menu_profile"
             tools:layout="@layout/fragment_profile"/>
 
     <fragment
             android:id="@+id/nav_search_car"
-            android:name="com.uta.utacarrental.ui.search_for_car.SearchForCarFragment"
+            android:name="com.uta.utacarrental.view.search_for_car.SearchForCarFragment"
             android:label="Search for Car"
             tools:layout="@layout/fragment_search_car"/>
 
     <fragment
             android:id="@+id/nav_view_available_car"
-            android:name="com.uta.utacarrental.ui.view_available_car.ViewAvailableCarFragment"
+            android:name="com.uta.utacarrental.view.view_available_car.ViewAvailableCarFragment"
             android:label="View Available Car"
             tools:layout="@layout/fragment_view_available_car"/>
 
     <fragment
             android:id="@+id/nav_share"
-            android:name="com.uta.utacarrental.ui.share.ShareFragment"
+            android:name="com.uta.utacarrental.view.share.ShareFragment"
             android:label="@string/menu_share"
             tools:layout="@layout/fragment_share"/>
 
     <fragment
             android:id="@+id/nav_send"
-            android:name="com.uta.utacarrental.ui.send.SendFragment"
+            android:name="com.uta.utacarrental.view.send.SendFragment"
             android:label="@string/menu_send"
             tools:layout="@layout/fragment_send"/>
 </navigation>

@@ -9,7 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.uta.utacarrental.database.User;
+import com.uta.utacarrental.model.User;
+import com.uta.utacarrental.view.common.ForgotPasswordScreen;
+import com.uta.utacarrental.view.common.Register;
+import com.uta.utacarrental.view.homepage.AdminHomepage;
+import com.uta.utacarrental.view.homepage.RMHomepage;
+import com.uta.utacarrental.view.homepage.UserHomepage;
+
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
