@@ -54,8 +54,9 @@ public class ReservationFragment extends Fragment {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(activity, reservations.get(position).getCarName(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(activity, reservations.get(position).getCarName(), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(activity, ReservationDetailActivity.class);
+                        intent.putExtra("reservationNumber", reservations.get(position).getReservationNumber());
                         startActivity(intent);
                     }
                 });

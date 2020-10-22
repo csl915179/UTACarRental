@@ -23,22 +23,22 @@ public class ReservationViewModel extends ViewModel {
         reservationList = new MutableLiveData<>();
 
         // reservation list data
-        Reservation reservation1 = new Reservation();
-        reservation1.setReservationNumber(1);
-        reservation1.setReservationTime(new Date());
-        reservation1.save();
-        Reservation reservation2 = new Reservation();
-        reservation2.setReservationNumber(2);
-        reservation2.setReservationTime(new Date());
-        reservation2.save();
-        Reservation reservation3 = new Reservation();
-        reservation3.setReservationNumber(3);
-        reservation3.setReservationTime(new Date());
-        reservation3.save();
-        Reservation reservation4 = new Reservation();
-        reservation4.setReservationNumber(4);
-        reservation4.setReservationTime(new Date());
-        reservation4.save();
+//        Reservation reservation1 = new Reservation();
+//        reservation1.setReservationNumber(1);
+//        reservation1.setReservationTime(new Date());
+//        reservation1.save();
+//        Reservation reservation2 = new Reservation();
+//        reservation2.setReservationNumber(2);
+//        reservation2.setReservationTime(new Date());
+//        reservation2.save();
+//        Reservation reservation3 = new Reservation();
+//        reservation3.setReservationNumber(3);
+//        reservation3.setReservationTime(new Date());
+//        reservation3.save();
+//        Reservation reservation4 = new Reservation();
+//        reservation4.setReservationNumber(4);
+//        reservation4.setReservationTime(new Date());
+//        reservation4.save();
         List<Reservation> reservations = LitePal.findAll(Reservation.class);
         reservationList.setValue(reservations);
     }
