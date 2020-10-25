@@ -4,6 +4,8 @@ import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User extends LitePalSupport implements Serializable {
     @Column(unique = true)
@@ -18,6 +20,7 @@ public class User extends LitePalSupport implements Serializable {
     private String city;
     private String state;
     private String zipcode;
+    private boolean privilege;
     private boolean ismember;
 
 
@@ -108,11 +111,16 @@ public class User extends LitePalSupport implements Serializable {
         this.zipcode = zipcode;
     }
 
-    public boolean getIsmember() {
-        return ismember;
+    public boolean isIsmember() { return ismember; }
+
+    public void setIsmember(boolean ismember) { this.ismember = ismember; }
+
+
+    public boolean isPrivilege() {
+        return privilege;
     }
 
-    public void setIsmember(Boolean ismember) {
-        this.ismember = ismember;
+    public void setPrivilege(boolean privilege) {
+        this.privilege = privilege;
     }
 }

@@ -12,19 +12,16 @@ public class Reservation extends LitePalSupport implements Serializable {
     private int reservationNumber;
     private String firstName;
     private String lastName;
-    private int carNumber;
-    private String carName;
-    private int carCapacity;
-    private Date startDate;
+    private Date reservationTime;
     private Date startTime;
-    private Date endDate;
     private Date endTime;
-    private String riderNumber;
+    private int riderNumber;
     private double totalCost;
     private boolean gps;
     private boolean sirius;
     private boolean onStart;
     private boolean member;
+    private User user;
 
     public int getReservationNumber() {
         return reservationNumber;
@@ -50,36 +47,12 @@ public class Reservation extends LitePalSupport implements Serializable {
         this.lastName = lastName;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public Date getReservationTime() {
+        return reservationTime;
     }
 
-    public void setCarNumber(int carNumber) {
-        this.carNumber = carNumber;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
-    public int getCarCapacity() {
-        return carCapacity;
-    }
-
-    public void setCarCapacity(int carCapacity) {
-        this.carCapacity = carCapacity;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setReservationTime(Date reservationTime) {
+        this.reservationTime = reservationTime;
     }
 
     public Date getStartTime() {
@@ -90,14 +63,6 @@ public class Reservation extends LitePalSupport implements Serializable {
         this.startTime = startTime;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     public Date getEndTime() {
         return endTime;
     }
@@ -106,11 +71,11 @@ public class Reservation extends LitePalSupport implements Serializable {
         this.endTime = endTime;
     }
 
-    public String getRiderNumber() {
+    public int getRiderNumber() {
         return riderNumber;
     }
 
-    public void setRiderNumber(String riderNumber) {
+    public void setRiderNumber(int riderNumber) {
         this.riderNumber = riderNumber;
     }
 
@@ -152,5 +117,13 @@ public class Reservation extends LitePalSupport implements Serializable {
 
     public void setMember(boolean member) {
         this.member = member;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
