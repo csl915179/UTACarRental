@@ -15,7 +15,7 @@ public class Car extends LitePalSupport implements Serializable {
     private double weekdayRate;
     private double weekendRate;
     private double weekRate;
-    private double GPSrate;
+    private double GPSRate;
     private double OnStartRate;
     private double SiriusXMRate;
     private List<Reservation> reservationList = new ArrayList<Reservation>();
@@ -64,12 +64,12 @@ public class Car extends LitePalSupport implements Serializable {
 
     public void setWeekRate(double weekRate) { this.weekRate = weekRate; }
 
-    public double getGPSrate() {
-        return GPSrate;
+    public double getGPSate() {
+        return GPSRate;
     }
 
-    public void setGPSrate(double GPSrate) {
-        this.GPSrate = GPSrate;
+    public void setGPSRate(double GPSate) {
+        this.GPSRate = GPSate;
     }
 
     public double getOnStartRate() {
