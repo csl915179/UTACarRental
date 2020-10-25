@@ -22,6 +22,7 @@ public class ReservationViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is reservation fragment");
         reservationList = new MutableLiveData<>();
+        makeMockReservation();
         List<Reservation> reservations = LitePal.findAll(Reservation.class);
         reservationList.setValue(reservations);
     }
@@ -34,18 +35,18 @@ public class ReservationViewModel extends ViewModel {
         return reservationList;
     }
 
-    public void makeMockData() {
+    public void makeMockReservation() {
         // reservation list data
-        Car car1 = new Car();
-        car1.setCarName("Car1");
-        car1.setCarNumber(1);
-        car1.setCapacity(5);
-        car1.save();
-        Car car2 = new Car();
-        car2.setCarName("Car2");
-        car2.setCarNumber(2);
-        car2.setCapacity(7);
-        car2.save();
+//        Car car1 = new Car();
+//        car1.setCarName("Car1");
+//        car1.setCarNumber(1);
+//        car1.setCapacity(5);
+//        car1.save();
+//        Car car2 = new Car();
+//        car2.setCarName("Car2");
+//        car2.setCarNumber(2);
+//        car2.setCapacity(7);
+//        car2.save();
 
         Reservation reservation1 = new Reservation();
         reservation1.setReservationNumber(1);

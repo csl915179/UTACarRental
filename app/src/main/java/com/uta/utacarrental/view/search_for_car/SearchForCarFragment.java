@@ -23,7 +23,7 @@ public class SearchForCarFragment extends Fragment {
                 ViewModelProviders.of(this).get(SearchForCarViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search_car, container, false);
 
-        //generateCar();
+        generateCar();
         return root;
     }
     public void generateCar(){
@@ -34,7 +34,7 @@ public class SearchForCarFragment extends Fragment {
         car1.setWeekdayRate(32.99);
         car1.setWeekendRate(37.99);
         car1.setWeekRate(230.93);
-        car1.setGPSrate(3.0);
+        car1.setGPSRate(3.0);
         car1.setOnStartRate(5.0);
         car1.setSiriusXMRate(7.0);
         car1.save();
@@ -46,7 +46,7 @@ public class SearchForCarFragment extends Fragment {
         car2.setWeekdayRate(39.99);
         car2.setWeekendRate(44.99);
         car2.setWeekRate(279.93);
-        car2.setGPSrate(3.0);
+        car2.setGPSRate(3.0);
         car2.setOnStartRate(5.0);
         car2.setSiriusXMRate(7.0);
         car2.save();
@@ -58,7 +58,7 @@ public class SearchForCarFragment extends Fragment {
         car3.setWeekdayRate(44.99);
         car3.setWeekendRate(49.99);
         car3.setWeekRate(314.93);
-        car3.setGPSrate(3.0);
+        car3.setGPSRate(3.0);
         car3.setOnStartRate(5.0);
         car3.setSiriusXMRate(7.0);
         car3.save();
@@ -70,7 +70,7 @@ public class SearchForCarFragment extends Fragment {
         car4.setWeekdayRate(45.99);
         car4.setWeekendRate(50.99);
         car4.setWeekRate(321.93);
-        car4.setGPSrate(3.0);
+        car4.setGPSRate(3.0);
         car4.setOnStartRate(5.0);
         car4.setSiriusXMRate(7.0);
         car4.save();
@@ -82,7 +82,7 @@ public class SearchForCarFragment extends Fragment {
         car5.setWeekdayRate(48.99);
         car5.setWeekendRate(53.99);
         car5.setWeekRate(342.93);
-        car5.setGPSrate(3.0);
+        car5.setGPSRate(3.0);
         car5.setOnStartRate(5.0);
         car5.setSiriusXMRate(7.0);
         car5.save();
@@ -94,7 +94,7 @@ public class SearchForCarFragment extends Fragment {
         car6.setWeekdayRate(52.99);
         car6.setWeekendRate(57.99);
         car6.setWeekRate(370.93);
-        car6.setGPSrate(3.0);
+        car6.setGPSRate(3.0);
         car6.setOnStartRate(5.0);
         car6.setSiriusXMRate(7.0);
         car6.save();
@@ -106,7 +106,7 @@ public class SearchForCarFragment extends Fragment {
         car7.setWeekdayRate(59.99);
         car7.setWeekendRate(64.99);
         car7.setWeekRate(419.93);
-        car7.setGPSrate(3.0);
+        car7.setGPSRate(3.0);
         car7.setOnStartRate(5.0);
         car7.setSiriusXMRate(7.0);
         car7.save();
@@ -118,7 +118,7 @@ public class SearchForCarFragment extends Fragment {
         car8.setWeekdayRate(59.99);
         car8.setWeekendRate(64.99);
         car8.setWeekRate(419.93);
-        car8.setGPSrate(3.0);
+        car8.setGPSRate(3.0);
         car8.setOnStartRate(5.0);
         car8.setSiriusXMRate(7.0);
         car8.save();
@@ -130,7 +130,7 @@ public class SearchForCarFragment extends Fragment {
         car9.setWeekdayRate(199.99);
         car9.setWeekendRate(204.99);
         car9.setWeekRate(1399.93);
-        car9.setGPSrate(5.0);
+        car9.setGPSRate(5.0);
         car9.setOnStartRate(7.0);
         car9.setSiriusXMRate(9.0);
         car9.save();
