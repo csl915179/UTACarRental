@@ -1,13 +1,16 @@
 package com.uta.utacarrental.model;
 
+import org.litepal.LitePal;
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Reservation extends LitePalSupport implements Serializable {
 
+    private long id;
     @Column(unique = true)
     private int reservationNumber;
     private String firstName;
@@ -21,7 +24,8 @@ public class Reservation extends LitePalSupport implements Serializable {
     private boolean sirius;
     private boolean onStart;
     private boolean member;
-    private User user;
+    private long car_id;
+    private long user_id;
 
     public int getReservationNumber() {
         return reservationNumber;
@@ -119,11 +123,37 @@ public class Reservation extends LitePalSupport implements Serializable {
         this.member = member;
     }
 
-    public User getUser() {
-        return user;
+    public long getCar_id() {
+        return car_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCar_id(long car_id) {
+        this.car_id = car_id;
+    }
+
+    public Car getCar() {
+        List<Car> list = LitePal.where("id=?", String.valueOf(this.car_id)).find(Car.class);
+        if (list.isEmpty()) {
+            return null;
+        } else {
+            return list.get(0);
+        }
+    }
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+    public User getUser() {
+        List<User> list = LitePal.where("id=?", String.valueOf(this.user_id)).find(User.class);
+        if (list.isEmpty()) {
+            return null;
+        } else {
+            return list.get(0);
+        }
     }
 }

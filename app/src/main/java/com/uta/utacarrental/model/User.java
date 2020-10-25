@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends LitePalSupport implements Serializable {
+
     @Column(unique = true)
     private String username;
     private String password;
@@ -23,37 +24,39 @@ public class User extends LitePalSupport implements Serializable {
     private boolean privilege;
     private boolean ismember;
 
+    private List<Reservation> commentList = new ArrayList<>();
 
+    public String getUsername() {
+        return username;
+    }
 
-    public String getUsername() { return username; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUTAID() {
         return UTAID;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-
-    public void setUsername(String username) { this.username = username;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setUTAID(String UTAID) {
         this.UTAID = UTAID;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
-
 
     public String getPhoneoremail() {
         return phoneoremail;
@@ -111,16 +114,27 @@ public class User extends LitePalSupport implements Serializable {
         this.zipcode = zipcode;
     }
 
-    public boolean isIsmember() { return ismember; }
-
-    public void setIsmember(boolean ismember) { this.ismember = ismember; }
-
-
     public boolean isPrivilege() {
         return privilege;
     }
 
     public void setPrivilege(boolean privilege) {
         this.privilege = privilege;
+    }
+
+    public boolean isIsmember() {
+        return ismember;
+    }
+
+    public void setIsmember(boolean ismember) {
+        this.ismember = ismember;
+    }
+
+    public List<Reservation> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Reservation> commentList) {
+        this.commentList = commentList;
     }
 }

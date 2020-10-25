@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.uta.utacarrental.R;
+import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
 
 import java.text.SimpleDateFormat;
@@ -53,18 +54,23 @@ public class ReservationAdapter  extends BaseAdapter {
         if (view==null) {
             view = inflater.inflate(R.layout.fragment_reservation_item, null);
         }
+
+        Reservation reservation = data.get(position);
+        Car car = data.get(position).getCar();
+
         TextView carNumber = view.findViewById(R.id.reservation_car_number);
-        carNumber.setText(String.valueOf(data.get(position).getCarNumber()));
+        carNumber.setText(String.valueOf(car.getCarNumber()));
         TextView carName = view.findViewById(R.id.reservation_car_name);
-        carName.setText(data.get(position).getCarName());
+        carName.setText(car.getCarName());
         TextView carCap = view.findViewById(R.id.reservation_car_capacity);
-        carCap.setText(String.valueOf(data.get(position).getCarCapacity()));
+        carCap.setText(String.valueOf(car.getCapacity()));
+
         TextView reservationTime = view.findViewById(R.id.reservation_time);
-        Date date = data.get(position).getReservationTime();
+        Date date = reservation.getReservationTime();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         reservationTime.setText(ft.format(date));
         TextView totalCost = view.findViewById(R.id.reservation_total_cost);
-        totalCost.setText(String.valueOf(data.get(position).getTotalCost()));
+        totalCost.setText(String.valueOf(reservation.getTotalCost()));
         return view;
     }
 }

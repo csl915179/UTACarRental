@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.reservation.ReservationDetailActivity"/>
+        <activity
+            android:name=".view.reservation.ReservationDetailActivity"
+            android:label="Reservation Detail"
+            android:theme="@style/ReservationDetailAppTheme" />
         <activity
             android:name=".view.homepage.UserHomepage"
             android:label="@string/title_activity_user_homepage"
