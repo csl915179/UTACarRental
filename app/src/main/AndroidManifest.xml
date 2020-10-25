@@ -38,8 +38,11 @@
         <activity android:name=".view.common.ChangePasswordScreen"></activity>
         <activity android:name=".view.common.ForgotPasswordScreen" />
         <activity
-                android:name=".DisplayMessageActivity"
+                android:name=".view.common.DisplayMessageActivity"
                 android:parentActivityName=".MainActivity" />
+        <activity
+                android:name=".view.search_for_car.SearchForCar"
+                android:parentActivityName=".view.homepage.RMHomepage" />
 
     </application>
 

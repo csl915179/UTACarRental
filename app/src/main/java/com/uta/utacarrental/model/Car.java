@@ -4,19 +4,21 @@ import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car extends LitePalSupport implements Serializable {
     @Column(unique = true)
     private String carName;
     private int carNumber;
     private int capacity;
-    private boolean carStatus;
     private double weekdayRate;
     private double weekendRate;
     private double weekRate;
     private double GPSrate;
     private double OnStartRate;
     private double SiriusXMRate;
+    private List<Reservation> reservationList = new ArrayList<Reservation>();
 
     public String getCarName() {
         return carName;
@@ -42,14 +44,6 @@ public class Car extends LitePalSupport implements Serializable {
         this.capacity = capacity;
     }
 
-    public boolean isCarStatus() {
-        return carStatus;
-    }
-
-    public void setCarStatus(boolean carStatus) {
-        this.carStatus = carStatus;
-    }
-
     public double getWeekdayRate() {
         return weekdayRate;
     }
@@ -65,6 +59,10 @@ public class Car extends LitePalSupport implements Serializable {
     public void setWeekendRate(double weekendRate) {
         this.weekendRate = weekendRate;
     }
+
+    public double getWeekRate() { return weekRate; }
+
+    public void setWeekRate(double weekRate) { this.weekRate = weekRate; }
 
     public double getGPSrate() {
         return GPSrate;
@@ -90,7 +88,11 @@ public class Car extends LitePalSupport implements Serializable {
         SiriusXMRate = siriusXMRate;
     }
 
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
 
-
-
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
 }

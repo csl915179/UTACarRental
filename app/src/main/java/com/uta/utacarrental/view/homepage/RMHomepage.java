@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -20,8 +23,20 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.uta.utacarrental.MainActivity;
 import com.uta.utacarrental.R;
+import com.uta.utacarrental.model.Car;
+import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
+import com.uta.utacarrental.view.search_for_car.SearchForCar;
+import com.uta.utacarrental.view.view_available_car.ViewAvailableCar;
+import org.litepal.LitePal;
+
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class RMHomepage extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
@@ -133,5 +148,61 @@ public class RMHomepage extends AppCompatActivity {
         intent.setClass(this, ChangePasswordScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void searchForCar(View view){
+        String carName = ((EditText)findViewById(R.id.search_for_car_edit)).getText().toString().trim().toLowerCase();
+        if (!carName.isEmpty()) {
+            Car car = LitePal.where("carName = ?", carName).findFirst(Car.class);
+            if (car!=null){
+                ArrayList<Car> carList = new ArrayList<Car>();
+                carList.add(car);
+                Intent intent = new Intent();
+                intent.putExtra("car_list",(Serializable)carList);
+                intent.setClass(this, SearchForCar.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(), "Car name does not exist.", Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(getApplicationContext(), "Please enter the Car Name", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void viewAvailableCar(View view){
+        String starttime = ((TextView)findViewById(R.id.start_time)).getText().toString();
+        String endtime = ((TextView)findViewById(R.id.end_time)).getText().toString();
+
+        if(starttime.equals("Click here to select a start time") || endtime.equals("Click here to select a end time")){
+            Toast.makeText(getApplicationContext(), "Please choose the start or end time.", Toast.LENGTH_SHORT).show();
+        }else {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            try {
+                Date startDate = format.parse(starttime);
+                Date endDate = format.parse(endtime);
+                int result = startDate.compareTo(endDate);
+                if (result == 1) {
+                    Toast.makeText(getApplicationContext(), "End Time earlier than Start Time", Toast.LENGTH_SHORT).show();
+                } else {
+                    //开始操作查询数据库的各种数据
+                    Date currentTime = new Date();
+                    List<Reservation> res = LitePal.where("(endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?)", startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"").find(Reservation.class);
+                    List<Car> carList = LitePal.where("id not in (select car_id from reservation where (endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?))", startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"").find(Car.class);
+
+                    Intent intent = new Intent();
+                    intent.putExtra("car_list",(Serializable)carList);
+                    intent.setClass(this, SearchForCar.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 }
