@@ -22,7 +22,7 @@ public class ReservationViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is reservation fragment");
         reservationList = new MutableLiveData<>();
-        makeMockReservation();
+//        makeMockReservation();
         List<Reservation> reservations = LitePal.findAll(Reservation.class);
         reservationList.setValue(reservations);
     }
