@@ -2,10 +2,16 @@ package com.uta.utacarrental.view.search_for_car;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
+
+import android.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
+
 
 import java.util.List;
 
@@ -22,4 +28,14 @@ public class SearchForCar extends AppCompatActivity {
         listView.setAdapter(adapter);
 
      }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

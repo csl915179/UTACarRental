@@ -6,7 +6,6 @@
         android:layout_height="match_parent"
         tools:context=".view.homepage.RMHomepage">
 
-
     <ListView
             android:scrollbars="none"
             android:id="@+id/car_listview"
