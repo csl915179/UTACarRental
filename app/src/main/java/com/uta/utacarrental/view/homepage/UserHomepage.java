@@ -24,6 +24,9 @@ import com.uta.utacarrental.MainActivity;
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
+import com.uta.utacarrental.view.view_car_details.ViewCarDetails;
+
+import java.util.Date;
 
 public class UserHomepage extends AppCompatActivity {
 
@@ -137,4 +140,18 @@ public class UserHomepage extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    //public void changePassword(MenuItem item){
+    //    //更改intent的目的地和Flags
+    //
+    //    Bundle bundle=new Bundle();
+    //    bundle.putSerializable("user", user);
+    //    bundle.putSerializable("st",new Date(1000));
+    //    bundle.putSerializable("et",new Date(1000*3600*24*2+3000));
+    //    intent.putExtras(bundle);
+    //    intent.putExtra("carName","economy");
+    //    intent.setClass(this, ViewCarDetails.class);
+    //    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    //    startActivity(intent);
+    //}
 }
