@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,7 +62,7 @@ public class RMHomepage extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_reservation, R.id.nav_profile, R.id.nav_search_car, R.id.nav_view_available_car)
+                R.id.nav_reservation, R.id.nav_profile, R.id.nav_search_available_car, R.id.nav_view_available_car)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

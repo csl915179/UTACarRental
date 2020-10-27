@@ -39,4 +39,6 @@
     <string name="oldpassword">Old password</string>
     <string name="newpassword">New password</string>
     <string name="confirmnewpassword">Confirm new password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

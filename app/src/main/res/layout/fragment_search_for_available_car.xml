@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/search_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="183dp"
+        android:onClick="SearchForAvailableCar"
+        android:text="search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capacity" />
+
+    <TextView
+        android:id="@+id/end_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="48dp"
+        android:text="Click here to select a end time  "
+        app:layout_constraintBottom_toTopOf="@+id/capacity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/end_text"
+        app:layout_constraintTop_toBottomOf="@+id/start_time" />
+
+    <TextView
+        android:id="@+id/start_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="55dp"
+        android:text="Start Time"
+        app:layout_constraintBottom_toBottomOf="@+id/start_time"
+        app:layout_constraintEnd_toStartOf="@+id/start_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/start_time" />
+
+    <TextView
+        android:id="@+id/end_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="8dp"
+        android:text="End Time"
+        app:layout_constraintBottom_toBottomOf="@+id/end_time"
+        app:layout_constraintEnd_toStartOf="@+id/end_time"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/start_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="41dp"
+        android:text="Click here to select a start time"
+        app:layout_constraintBottom_toTopOf="@+id/end_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/start_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/capacity_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="5dp"
+        android:text="Capacity"
+        app:layout_constraintBottom_toBottomOf="@+id/capacity"
+        app:layout_constraintEnd_toStartOf="@+id/capacity"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/capacity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="37dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/search_but"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/capacity_text"
+        app:layout_constraintTop_toBottomOf="@+id/end_time" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

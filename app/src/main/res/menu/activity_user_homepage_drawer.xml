@@ -11,8 +11,8 @@
                 android:id="@+id/nav_reservation"
                 android:title="Reservation"/>
         <item
-                android:id="@+id/nav_search_car"
-                android:title="Search for Car"/>
+            android:id="@+id/nav_search_available_car"
+            android:title="Search Available Car" />
     </group>
 
 <!--    <item android:title="Communicate">-->
