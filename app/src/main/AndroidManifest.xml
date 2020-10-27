@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.view_car_details.ViewCarDetails"></activity>
         <activity
             android:name=".view.reservation.ReservationDetailActivity"
             android:label="Reservation Detail"
@@ -41,11 +42,11 @@
         <activity android:name=".view.common.ChangePasswordScreen" />
         <activity android:name=".view.common.ForgotPasswordScreen" />
         <activity
-                android:name=".view.common.DisplayMessageActivity"
-                android:parentActivityName=".MainActivity" />
+            android:name=".view.common.DisplayMessageActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-                android:name=".view.search_for_car.SearchForCar"
-                android:parentActivityName=".view.homepage.RMHomepage" />
+            android:name=".view.search_for_car.SearchForCar"
+            android:parentActivityName=".view.homepage.RMHomepage" />
     </application>
 
 </manifest>

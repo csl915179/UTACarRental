@@ -31,6 +31,9 @@ import com.uta.utacarrental.view.search_for_car.SearchForCar;
 
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
+import com.uta.utacarrental.view.view_car_details.ViewCarDetails;
+
+import java.util.Date;
 
 import org.litepal.LitePal;
 
@@ -153,6 +156,19 @@ public class UserHomepage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //public void changePassword(MenuItem item){
+    //    //更改intent的目的地和Flags
+    //
+    //    Bundle bundle=new Bundle();
+    //    bundle.putSerializable("user", user);
+    //    bundle.putSerializable("st",new Date(1000));
+    //    bundle.putSerializable("et",new Date(1000*3600*24*2+3000));
+    //    intent.putExtras(bundle);
+    //    intent.putExtra("carName","economy");
+    //    intent.setClass(this, ViewCarDetails.class);
+    //    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    //    startActivity(intent);
+    //}
     public void SearchForAvailableCar(View view){
         String starttime = ((TextView)findViewById(R.id.start_time)).getText().toString();
         String endtime = ((TextView)findViewById(R.id.end_time)).getText().toString();
