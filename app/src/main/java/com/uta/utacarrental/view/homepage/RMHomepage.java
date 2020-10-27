@@ -181,12 +181,16 @@ public class RMHomepage extends AppCompatActivity {
             try {
                 Date startDate = format.parse(starttime);
                 Date endDate = format.parse(endtime);
+                Date currentTime = new Date();
                 int result = startDate.compareTo(endDate);
-                if (result == 1) {
+                int result2 = currentTime.compareTo(startDate);
+                if (result2==1){
+                    Toast.makeText(getApplicationContext(), "Start Time earlier than Current Time", Toast.LENGTH_SHORT).show();
+                }else if (result == 1) {
                     Toast.makeText(getApplicationContext(), "End Time earlier than Start Time", Toast.LENGTH_SHORT).show();
                 } else {
                     //开始操作查询数据库的各种数据
-                    Date currentTime = new Date();
+
                     List<Reservation> res = LitePal.where("(endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?)", startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"").find(Reservation.class);
                     List<Car> carList = LitePal.where("id not in (select car_id from reservation where (endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?))", startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"").find(Car.class);
 
