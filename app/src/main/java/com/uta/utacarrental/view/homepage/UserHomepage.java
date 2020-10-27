@@ -186,7 +186,7 @@ public class UserHomepage extends AppCompatActivity {
                     intent.putExtra("car_list",(Serializable)carList);
                     intent.putExtra("startDate", startDate);
                     intent.putExtra("endDate", endDate);
-                    intent.putExtra("capacity", capacity),
+                    intent.putExtra("capacity", capacity);
                     intent.setClass(this, SearchForCar.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
