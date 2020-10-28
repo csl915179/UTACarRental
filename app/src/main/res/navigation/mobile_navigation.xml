@@ -6,7 +6,7 @@
             app:startDestination="@+id/nav_profile">
 
     <fragment
-            android:id="@+id/nav_reservation"
+            android:id="@+id/nav_reservations"
             android:name="com.uta.utacarrental.view.reservation.ReservationFragment"
             android:label="Reservation"
             tools:layout="@layout/fragment_reservation"/>
@@ -49,4 +49,9 @@
             android:name="com.uta.utacarrental.view.SearchForAvailableCar.SearchForAvailableCarFragment"
             android:label="SearchForAvailableCar"
             tools:layout="@layout/fragment_search_for_available_car"/>
+    <fragment
+        android:id="@+id/nav_view_my_reservations"
+        android:name="com.uta.utacarrental.view.view_my_reservations.ViewMyReservationsFragment"
+        android:label="ViewMyReservations"
+        tools:layout="@layout/fragment_view_my_reservations"/>
 </navigation>

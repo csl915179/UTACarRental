@@ -61,6 +61,7 @@ public class ViewCarDetails extends AppCompatActivity {
         st = (Date) intent.getSerializableExtra("st");
         //System.out.println(st);
         et = (Date) intent.getSerializableExtra("et");
+
         //System.out.println(et);
         String carName = intent.getStringExtra("carName");
         List<Car> carList = LitePal.where("carName = ?", String.valueOf(carName)).find(Car.class);
