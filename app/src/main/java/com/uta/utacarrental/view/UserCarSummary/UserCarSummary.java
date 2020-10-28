@@ -45,7 +45,7 @@ public class UserCarSummary extends AppCompatActivity {
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("user", user);
                 bundle.putSerializable("st",ThisIntent.getSerializableExtra("startDate"));
-                bundle.putSerializable("st",ThisIntent.getSerializableExtra("endDate"));
+                bundle.putSerializable("et",ThisIntent.getSerializableExtra("endDate"));
                 Intent detailIntent = new Intent();
                 detailIntent.putExtras(bundle);
                 detailIntent.putExtra("carName",car.getCarName());
