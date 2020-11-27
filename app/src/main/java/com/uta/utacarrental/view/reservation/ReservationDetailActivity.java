@@ -33,6 +33,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.reservation_detail_toolbar);
         toolbar.setTitle("Reservation Detail");
+        //setTitle("Modify Reservation");
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

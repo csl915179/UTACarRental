@@ -326,8 +326,8 @@ public class ViewCarDetails extends AppCompatActivity {
         //reservation.setUser_id();  没有user_id
         reservation.save();
 
-        Intent intent=new Intent();
 
+        Intent intent=new Intent();
 
         Bundle bundle=new Bundle();
         bundle.putSerializable("user", user);
@@ -335,6 +335,7 @@ public class ViewCarDetails extends AppCompatActivity {
 
         intent.putExtra("reservationNumber",reservation.getReservationNumber());
         intent.setClass(this, ReservationDetailActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 
     }
