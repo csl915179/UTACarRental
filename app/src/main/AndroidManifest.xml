@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.UserCarSummary.UserCarSummary"></activity>
+        <activity android:name=".view.reservation.ModifyReservationActivity"></activity>
+        <activity android:name=".view.UserCarSummary.UserCarSummary" />
         <activity android:name=".view.view_car_details.ViewCarDetails" />
         <activity
             android:name=".view.reservation.ReservationDetailActivity"

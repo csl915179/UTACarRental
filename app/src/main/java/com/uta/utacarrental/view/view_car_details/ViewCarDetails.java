@@ -111,32 +111,10 @@ public class ViewCarDetails extends AppCompatActivity {
 
 
             Spinner GPS_selected = (Spinner)findViewById(R.id.GPS_selected);
-
-            GPS_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    totalCost=totalCost();
-                }
-
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    return;
-                }
-            });
-
             Spinner on_star_selected = (Spinner)findViewById(R.id.on_star_selected);
-
-            on_star_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    totalCost=totalCost();
-                }
-
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    return;
-                }
-            });
-
             Spinner sirius_xm_selected = (Spinner)findViewById(R.id.sirius_xm_selected);
 
-            sirius_xm_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     totalCost=totalCost();
                 }
@@ -144,7 +122,13 @@ public class ViewCarDetails extends AppCompatActivity {
                 public void onNothingSelected(AdapterView<?> adapterView) {
                     return;
                 }
-            });
+            };
+
+            GPS_selected.setOnItemSelectedListener(listener);
+            on_star_selected.setOnItemSelectedListener(listener);
+            sirius_xm_selected.setOnItemSelectedListener(listener);
+
+
         }
 
         Button reserveButton= (Button)findViewById(R.id.details_reserve);

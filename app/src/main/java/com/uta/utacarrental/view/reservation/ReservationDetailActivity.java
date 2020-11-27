@@ -23,6 +23,9 @@ import java.util.List;
 
 public class ReservationDetailActivity extends AppCompatActivity {
 
+    Reservation reservation;
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        User user = (User) intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
 
         //角色为user时显示修改订单按钮
         if ("user".equals(user.getRole())) {
@@ -58,7 +61,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
         int reservationNumber = intent.getIntExtra("reservationNumber", 0);
         List<Reservation> reservationList = LitePal.where("reservationnumber = ?", String.valueOf(reservationNumber)).find(Reservation.class);
         if (!reservationList.isEmpty()) {
-            Reservation reservation = reservationList.get(0);
+            reservation = reservationList.get(0);
             Car car = reservation.getCar();
 
             TextView reservationNumberTv = findViewById(R.id.reservation_number);
@@ -101,4 +104,17 @@ public class ReservationDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void modify(View view){
+        Intent intent=new Intent();
+
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("reservation", reservation);
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+
+        intent.setClass(this, ModifyReservationActivity.class);
+        startActivity(intent);
+    }
+
 }
