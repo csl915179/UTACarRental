@@ -4,7 +4,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +21,8 @@ import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
+import com.uta.utacarrental.view.homepage.UserHomepage;
+import com.uta.utacarrental.view.view_my_reservations.ViewMyReservationsFragment;
 
 import org.litepal.LitePal;
 
@@ -138,8 +143,6 @@ public class ModifyReservationActivity extends AppCompatActivity {
         on_star_selected.setOnItemSelectedListener(listener);
         sirius_xm_selected.setOnItemSelectedListener(listener);
 
-
-
     }
 
     public Double totalCost(){
@@ -240,7 +243,35 @@ public class ModifyReservationActivity extends AppCompatActivity {
         return sum;
     }
 
-    public void save(View view){
+
+    public void confirmation(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Add the buttons
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                save();
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                return;
+
+            }
+        });
+        // Set other dialog properties
+        builder.setMessage("Do you want to save the changes?");
+        builder.setTitle("Confirmation");
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+    public void save(){
 
         riderNumber=Integer.parseInt(((EditText) findViewById(R.id.modify_number_of_riders)).getText().toString().trim());
         if(riderNumber>car.getCapacity()){
@@ -269,7 +300,17 @@ public class ModifyReservationActivity extends AppCompatActivity {
         LitePal.update(Reservation.class,roomValues,reservation.getId());
         Toast.makeText(getApplicationContext(), "Reservation modified successfully", Toast.LENGTH_SHORT).show();
 
+        Intent intent=new Intent();
 
+        Bundle bundle=new Bundle();
+        //bundle.putSerializable("reservationNumber", reservation.getReservationNumber());
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+
+        intent.putExtra("reservationNumber", reservation.getReservationNumber());
+
+        intent.setClass(this,ReservationDetailActivity.class);
+        startActivity(intent);
 
     }
 
