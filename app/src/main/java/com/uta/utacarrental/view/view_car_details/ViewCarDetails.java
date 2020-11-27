@@ -22,6 +22,8 @@ import com.uta.utacarrental.view.reservation.ReservationDetailActivity;
 
 import org.litepal.LitePal;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -303,6 +305,10 @@ public class ViewCarDetails extends AppCompatActivity {
         }
 
         sum=sum*1.0825;
+
+        //保留两位小数，去掉尾数
+        BigDecimal b = new BigDecimal(sum);
+        sum = b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue();
 
         ((TextView)findViewById(R.id.details_total_cost)).setText(String.valueOf(sum));
 

@@ -41,13 +41,21 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         User user = (User) intent.getSerializableExtra("user");
 
-        if ("user".equals(user.getRole())){
+        //角色为user时显示修改订单按钮
+        if ("user".equals(user.getRole())) {
             findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
-        }else {
+        } else {
             findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
         }
 
-        int reservationNumber = intent.getIntExtra("reservationNumber",0);
+        //角色为user或rental manager时显示删除订单按钮
+        if ("user".equals(user.getRole()) || "rental manager".equals(user.getRole())) {
+            findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
+        }
+
+        int reservationNumber = intent.getIntExtra("reservationNumber", 0);
         List<Reservation> reservationList = LitePal.where("reservationnumber = ?", String.valueOf(reservationNumber)).find(Reservation.class);
         if (!reservationList.isEmpty()) {
             Reservation reservation = reservationList.get(0);
