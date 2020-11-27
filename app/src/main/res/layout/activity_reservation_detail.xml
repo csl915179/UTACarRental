@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".view.reservation.ReservationDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/reservation_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,9 +30,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reservation Number:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Reservation Number:" />
 
             <TextView
                 android:id="@+id/reservation_number"
@@ -49,9 +50,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Number:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Car Number:" />
 
             <TextView
                 android:id="@+id/reservation_car_number"
@@ -69,9 +70,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Name:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Car Name:" />
 
             <TextView
                 android:id="@+id/reservation_car_name"
@@ -89,9 +90,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Capacity:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Car Capacity:" />
 
             <TextView
                 android:id="@+id/reservation_car_capacity"
@@ -100,25 +101,25 @@
                 android:text="5" />
         </LinearLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:orientation="horizontal">-->
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:orientation="horizontal">-->
 
-    <!--        <TextView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="Start Date:"-->
-    <!--            android:layout_marginEnd="8dp"-->
-    <!--            android:layout_marginRight="8dp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Start Date:"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:layout_marginRight="8dp" />-->
 
-    <!--        <TextView-->
-    <!--            android:id="@+id/reservation_start_date"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="2020/09/10" />-->
-    <!--    </LinearLayout>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/reservation_start_date"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="2020/09/10" />-->
+        <!--    </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,9 +130,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Time:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Start Time:" />
 
             <TextView
                 android:id="@+id/reservation_start_time"
@@ -140,25 +141,25 @@
                 android:text="12:29:10" />
         </LinearLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:orientation="horizontal">-->
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:orientation="horizontal">-->
 
-    <!--        <TextView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="End Date:"-->
-    <!--            android:layout_marginEnd="8dp"-->
-    <!--            android:layout_marginRight="8dp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="End Date:"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:layout_marginRight="8dp" />-->
 
-    <!--        <TextView-->
-    <!--            android:id="@+id/reservation_end_date"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="2020/09/10" />-->
-    <!--    </LinearLayout>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/reservation_end_date"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="2020/09/10" />-->
+        <!--    </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,9 +170,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Time:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="End Time:" />
 
             <TextView
                 android:id="@+id/reservation_end_time"
@@ -189,9 +190,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reservation Time:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Reservation Time:" />
 
             <TextView
                 android:id="@+id/reservation_time"
@@ -209,9 +210,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number of Riders:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Number of Riders:" />
 
             <TextView
                 android:id="@+id/reservation_riders_number"
@@ -229,9 +230,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Cost:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Total Cost:" />
 
             <TextView
                 android:id="@+id/reservation_total_cost"
@@ -249,9 +250,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gps Selected:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Gps Selected:" />
 
             <TextView
                 android:id="@+id/reservation_gps_selected"
@@ -269,9 +270,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sirius Selected:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Sirius Selected:" />
 
             <TextView
                 android:id="@+id/reservation_sirius_selected"
@@ -289,9 +290,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="On Star Selected:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="On Star Selected:" />
 
             <TextView
                 android:id="@+id/reservation_onstar_selected"
@@ -309,9 +310,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arlington Auto Club Member Status:"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="Arlington Auto Club Member Status:" />
 
             <TextView
                 android:id="@+id/reservation_club_member"
@@ -321,14 +322,28 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/modify_reservation_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:padding="20dp"
             android:gravity="center"
+            android:padding="20dp"
+            android:text="Modify Reservation"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/delete_reservation_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:padding="20dp"
             android:text="Delete Reservation"
             android:textAllCaps="false"
             android:textSize="16sp" />

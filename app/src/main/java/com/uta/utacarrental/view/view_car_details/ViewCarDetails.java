@@ -337,6 +337,12 @@ public class ViewCarDetails extends AppCompatActivity {
         reservation.save();
 
         Intent intent=new Intent();
+
+
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+
         intent.putExtra("reservationNumber",reservation.getReservationNumber());
         intent.setClass(this, ReservationDetailActivity.class);
         startActivity(intent);

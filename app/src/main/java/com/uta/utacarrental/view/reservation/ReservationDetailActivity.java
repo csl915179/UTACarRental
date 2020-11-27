@@ -8,10 +8,12 @@ import androidx.appcompat.widget.Toolbar;
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
+import com.uta.utacarrental.model.User;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.litepal.LitePal;
@@ -36,6 +38,15 @@ public class ReservationDetailActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
+
+        User user = (User) intent.getSerializableExtra("user");
+
+        if ("user".equals(user.getRole())){
+            findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
+        }else {
+            findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
+        }
+
         int reservationNumber = intent.getIntExtra("reservationNumber",0);
         List<Reservation> reservationList = LitePal.where("reservationnumber = ?", String.valueOf(reservationNumber)).find(Reservation.class);
         if (!reservationList.isEmpty()) {
