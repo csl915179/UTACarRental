@@ -23,7 +23,7 @@ public class SearchForCarFragment extends Fragment {
                 ViewModelProviders.of(this).get(SearchForCarViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search_car, container, false);
 
-
+      master
         //generateCar();
         return root;
     }
