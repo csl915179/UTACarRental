@@ -41,11 +41,15 @@
         <activity android:name=".view.common.ChangePasswordScreen" />
         <activity android:name=".view.common.ForgotPasswordScreen" />
         <activity
-                android:name=".view.common.DisplayMessageActivity"
-                android:parentActivityName=".MainActivity" />
+            android:name=".view.common.DisplayMessageActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-                android:name=".view.search_for_car.SearchForCar"
-                android:parentActivityName=".view.homepage.RMHomepage" />
+            android:name=".view.search_for_car.SearchForCar"
+            android:parentActivityName=".view.homepage.RMHomepage" />
+        <activity
+            android:name=".view.admin.ViewSelectedUsers"
+            android:label="ViewSelectedUsersPage"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
