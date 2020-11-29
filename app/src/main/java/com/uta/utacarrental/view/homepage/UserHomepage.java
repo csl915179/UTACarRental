@@ -27,17 +27,19 @@ import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.view.SearchForAvailableCar.SearchForAvailableCar;
-import com.uta.utacarrental.view.search_for_car.SearchForCar;
 
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
+import com.uta.utacarrental.view.UserCarSummary.UserCarSummary;
+import com.uta.utacarrental.view.view_car_details.ViewCarDetails;
+
+import java.util.Date;
 
 import org.litepal.LitePal;
 
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class UserHomepage extends AppCompatActivity {
@@ -66,7 +68,7 @@ public class UserHomepage extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_reservation, R.id.nav_profile, R.id.nav_search_available_car, R.id.nav_share, R.id.nav_send)
+                R.id.nav_view_my_reservations, R.id.nav_profile, R.id.nav_search_available_car, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -153,6 +155,19 @@ public class UserHomepage extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    public void changePassword(MenuItem item){
+//        //更改intent的目的地和Flags
+//
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable("user", user);
+//        bundle.putSerializable("st",new Date(1000));
+//        bundle.putSerializable("et",new Date(1000*3600*24*2+3000));
+//        intent.putExtras(bundle);
+//        intent.putExtra("carName","economy");
+//        intent.setClass(this, ViewCarDetails.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
+//    }
     public void SearchForAvailableCar(View view){
         String starttime = ((TextView)findViewById(R.id.start_time)).getText().toString();
         String endtime = ((TextView)findViewById(R.id.end_time)).getText().toString();
@@ -175,28 +190,33 @@ public class UserHomepage extends AppCompatActivity {
                 } else {
                     //开始操作查询数据库的各种数据
 
-                    List<Reservation> res = LitePal.where("(endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?)", startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"").find(Reservation.class);
                     List<Car> carList = LitePal.where("id not in " + "(" +
                             "select car_id from reservation where " +
                                     "(endtime > ? and starttime < ?) or (starttime < ? and endtime > ?) or (starttime > ? and endtime < ?)" + ")"
                             +"and" + "(capacity > ?)",
                             startDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",endDate.getTime()+"",startDate.getTime()+"",endDate.getTime()+"",capacity+"").find(Car.class);
 
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("user", user);
                     Intent intent = new Intent();
                     intent.putExtra("car_list",(Serializable)carList);
                     intent.putExtra("startDate", startDate);
                     intent.putExtra("endDate", endDate);
                     intent.putExtra("capacity", capacity);
-                    intent.setClass(this, SearchForCar.class);
+                    intent.putExtras(bundle);
+                    intent.setClass(this, UserCarSummary.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-
-
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public void ViewMyReservations(View view){
+
     }
 
 }

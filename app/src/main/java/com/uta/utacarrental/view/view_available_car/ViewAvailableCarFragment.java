@@ -42,17 +42,7 @@ public class ViewAvailableCarFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_view_available_car, container, false);
 
         //generateReservations();
-
-//        calendarView = (CalendarView)(root.findViewById(R.id.calendar));
-//        calendarView.setVisibility(View.INVISIBLE);
-//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            public void onSelectedDayChange(CalendarView view, int year, int month,
-//                                            int dayOfMonth) {
-//                String content = year+"-"+(month+1)+"-"+dayOfMonth;
-//                Toast.makeText(getContext(), "你选择了:\n"+content, Toast.LENGTH_SHORT).show();
-//                System.out.println("你选择了:\n"+content);
-//            }
-//        });
+        
         starttime = (TextView) root.findViewById(R.id.start_time);
         endtime = (TextView) root.findViewById(R.id.end_time);
 

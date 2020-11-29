@@ -8,7 +8,7 @@
                 android:id="@+id/nav_profile"
                 android:title="@string/menu_profile"/>
         <item
-                android:id="@+id/nav_reservation"
+                android:id="@+id/nav_reservations"
                 android:title="Reservation"/>
         <item
                 android:id="@+id/nav_search_car"
