@@ -8,10 +8,12 @@ import androidx.appcompat.widget.Toolbar;
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
+import com.uta.utacarrental.model.User;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.litepal.LitePal;
@@ -21,6 +23,9 @@ import java.util.List;
 
 public class ReservationDetailActivity extends AppCompatActivity {
 
+    Reservation reservation;
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.reservation_detail_toolbar);
         toolbar.setTitle("Reservation Detail");
+        //setTitle("Modify Reservation");
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -36,10 +42,27 @@ public class ReservationDetailActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        int reservationNumber = intent.getIntExtra("reservationNumber",0);
+
+        user = (User) intent.getSerializableExtra("user");
+
+        //角色为user时显示修改订单按钮
+        if ("user".equals(user.getRole())) {
+            findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
+        }
+
+        //角色为user或rental manager时显示删除订单按钮
+        if ("user".equals(user.getRole()) || "rental manager".equals(user.getRole())) {
+            findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
+        }
+
+        int reservationNumber = intent.getIntExtra("reservationNumber", 0);
         List<Reservation> reservationList = LitePal.where("reservationnumber = ?", String.valueOf(reservationNumber)).find(Reservation.class);
         if (!reservationList.isEmpty()) {
-            Reservation reservation = reservationList.get(0);
+            reservation = reservationList.get(0);
             Car car = reservation.getCar();
 
             TextView reservationNumberTv = findViewById(R.id.reservation_number);
@@ -82,4 +105,17 @@ public class ReservationDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void modify(View view){
+        Intent intent=new Intent();
+
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("reservation", reservation);
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+
+        intent.setClass(this, ModifyReservationActivity.class);
+        startActivity(intent);
+    }
+
 }

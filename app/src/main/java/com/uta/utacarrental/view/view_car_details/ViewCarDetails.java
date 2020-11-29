@@ -22,6 +22,8 @@ import com.uta.utacarrental.view.reservation.ReservationDetailActivity;
 
 import org.litepal.LitePal;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -109,32 +111,10 @@ public class ViewCarDetails extends AppCompatActivity {
 
 
             Spinner GPS_selected = (Spinner)findViewById(R.id.GPS_selected);
-
-            GPS_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    totalCost=totalCost();
-                }
-
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    return;
-                }
-            });
-
             Spinner on_star_selected = (Spinner)findViewById(R.id.on_star_selected);
-
-            on_star_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    totalCost=totalCost();
-                }
-
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    return;
-                }
-            });
-
             Spinner sirius_xm_selected = (Spinner)findViewById(R.id.sirius_xm_selected);
 
-            sirius_xm_selected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     totalCost=totalCost();
                 }
@@ -142,7 +122,13 @@ public class ViewCarDetails extends AppCompatActivity {
                 public void onNothingSelected(AdapterView<?> adapterView) {
                     return;
                 }
-            });
+            };
+
+            GPS_selected.setOnItemSelectedListener(listener);
+            on_star_selected.setOnItemSelectedListener(listener);
+            sirius_xm_selected.setOnItemSelectedListener(listener);
+
+
         }
 
         Button reserveButton= (Button)findViewById(R.id.details_reserve);
@@ -304,6 +290,10 @@ public class ViewCarDetails extends AppCompatActivity {
 
         sum=sum*1.0825;
 
+        //保留两位小数，去掉尾数
+        BigDecimal b = new BigDecimal(sum);
+        sum = b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue();
+
         ((TextView)findViewById(R.id.details_total_cost)).setText(String.valueOf(sum));
 
         return sum;
@@ -336,9 +326,16 @@ public class ViewCarDetails extends AppCompatActivity {
         //reservation.setUser_id();  没有user_id
         reservation.save();
 
+
         Intent intent=new Intent();
+
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+
         intent.putExtra("reservationNumber",reservation.getReservationNumber());
         intent.setClass(this, ReservationDetailActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 
     }
