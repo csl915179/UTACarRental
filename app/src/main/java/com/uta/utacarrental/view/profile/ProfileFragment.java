@@ -54,6 +54,8 @@ public class ProfileFragment extends Fragment {
         privilegeStatus = root.findViewById(R.id.privilegeStatus);
         clubMemberStatus = root.findViewById(R.id.clubmemberStatus);
 
+        // get login User
+
         profileViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
