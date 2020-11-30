@@ -9,6 +9,7 @@ import java.util.List;
 
 public class User extends LitePalSupport implements Serializable {
 
+    private long id;
     @Column(unique = true)
     private String username;
     private String password;
@@ -23,6 +24,10 @@ public class User extends LitePalSupport implements Serializable {
     private String zipcode;
     private boolean privilege;
     private boolean ismember;
+
+    public long getId() {
+        return id;
+    }
 
     private List<Reservation> commentList = new ArrayList<>();
 

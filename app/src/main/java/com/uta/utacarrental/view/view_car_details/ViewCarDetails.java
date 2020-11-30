@@ -323,7 +323,7 @@ public class ViewCarDetails extends AppCompatActivity {
         reservation.setOnStart(onStar);
         reservation.setMember(user.isIsmember());
         reservation.setCar_id(car.getCarNumber());//没有Long类型的car_id
-        //reservation.setUser_id();  没有user_id
+        reservation.setUser_id(user.getId());
         reservation.save();
 
 
