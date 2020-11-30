@@ -322,7 +322,11 @@
         </LinearLayout>
 
         <Button
+<<<<<<< HEAD
             android:id="@+id/modify_reservation_button"
+=======
+            android:id="@+id/delete_reservation_button"
+>>>>>>> a48e309... update delete reservation
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
