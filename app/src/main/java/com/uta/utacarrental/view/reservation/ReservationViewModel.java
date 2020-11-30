@@ -16,6 +16,7 @@ import java.util.List;
 public class ReservationViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
+    private List<Reservation> reservations;
     private MutableLiveData<List<Reservation>> reservationList;
 
     public ReservationViewModel() {
@@ -23,7 +24,7 @@ public class ReservationViewModel extends ViewModel {
         mText.setValue("This is reservation fragment");
         reservationList = new MutableLiveData<>();
         makeMockReservation();
-        List<Reservation> reservations = LitePal.findAll(Reservation.class);
+        reservations = LitePal.findAll(Reservation.class);
         reservationList.setValue(reservations);
     }
 
@@ -31,7 +32,17 @@ public class ReservationViewModel extends ViewModel {
         return mText;
     }
 
-    public LiveData<List<Reservation>> getListData() {
+    public LiveData<List<Reservation>> getListData(Date fromDate, Date toDate) {
+        List<Reservation> reservationsPeriod = new ArrayList<>();
+        reservations = LitePal.findAll(Reservation.class);
+        for (int i = 0; i < reservations.size(); i++) {
+//            System.out.println(reservations.get(i).getReservationTime().after(fromDate));
+//            System.out.println(reservations.get(i).getReservationTime().before(toDate));
+            if (reservations.get(i).getReservationTime().after(fromDate) && reservations.get(i).getReservationTime().before(toDate)) {
+                reservationsPeriod.add(reservations.get(i));
+            }
+        }
+        reservationList.setValue(reservationsPeriod);
         return reservationList;
     }
 

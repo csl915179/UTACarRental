@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.litepal.LitePal;
@@ -43,28 +44,27 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        user = (User) intent.getSerializableExtra("user");
+        String role = intent.getStringExtra("user");
+        if (role != null) {
+            //角色为user时显示修改订单按钮
+            if ("user".equals(role)) {
+                findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
+            }
 
-        //角色为user时显示修改订单按钮
-        if ("user".equals(user.getRole())) {
-            findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
+            //角色为user或rental manager时显示删除订单按钮
+            if ("user".equals(role) || "rental manager".equals(role)) {
+                findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
+            }
         }
 
-        //角色为user或rental manager时显示删除订单按钮
-        if ("user".equals(user.getRole()) || "rental manager".equals(user.getRole())) {
-            findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
-        }
-
-        int reservationNumber = intent.getIntExtra("reservationNumber", 0);
-        List<Reservation> reservationList = LitePal.where("reservationnumber = ?", String.valueOf(reservationNumber)).find(Reservation.class);
-        if (!reservationList.isEmpty()) {
-            reservation = reservationList.get(0);
+        final long reservationID = intent.getLongExtra("reservationID",0);
+        Reservation reservation = LitePal.find(Reservation.class, reservationID);
+        if (reservation != null) {
             Car car = reservation.getCar();
-
             TextView reservationNumberTv = findViewById(R.id.reservation_number);
             reservationNumberTv.setText(String.valueOf(reservation.getReservationNumber()));
             TextView carNumberTv = findViewById(R.id.reservation_car_number);
@@ -75,11 +75,17 @@ public class ReservationDetailActivity extends AppCompatActivity {
             carCapTv.setText(String.valueOf(car.getCapacity()));
             SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             TextView startTimeTv = findViewById(R.id.reservation_start_time);
-            startTimeTv.setText(dateTimeFormat.format(reservation.getStartTime()));
+            if (reservation.getStartTime() != null) {
+                startTimeTv.setText(dateTimeFormat.format(reservation.getStartTime()));
+            }
             TextView endTimeTv = findViewById(R.id.reservation_end_time);
-            endTimeTv.setText(dateTimeFormat.format(reservation.getEndTime()));
+            if (reservation.getEndTime() != null) {
+                endTimeTv.setText(dateTimeFormat.format(reservation.getEndTime()));
+            }
             TextView reservationTimeTv = findViewById(R.id.reservation_time);
-            reservationTimeTv.setText(dateTimeFormat.format(reservation.getReservationTime()));
+            if (reservation.getReservationTime() != null) {
+                reservationTimeTv.setText(dateTimeFormat.format(reservation.getReservationTime()));
+            }
             TextView riderNumberTv = findViewById(R.id.reservation_riders_number);
             riderNumberTv.setText(String.valueOf(reservation.getRiderNumber()));
             TextView totalCostTv = findViewById(R.id.reservation_total_cost);
@@ -94,7 +100,15 @@ public class ReservationDetailActivity extends AppCompatActivity {
             clubMemberTv.setText(String.valueOf(reservation.isMember()));
         }
 
-    }
+        Button deleteButton = findViewById(R.id.delete_reservation_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteReservation(reservationID);
+            }
+        });
+
+        }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -118,4 +132,9 @@ public class ReservationDetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void deleteReservation(long reservationID) {
+
+        LitePal.delete(Reservation.class, reservationID);
+        finish();
+    }
 }
