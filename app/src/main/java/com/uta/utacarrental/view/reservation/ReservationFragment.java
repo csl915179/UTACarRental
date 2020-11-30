@@ -69,11 +69,10 @@ public class ReservationFragment extends Fragment {
                 showDialogPick((TextView) v);
             }
         });
-        updateReservationList();
         return root;
     }
 
-    private void updateReservationList() {
+    public void updateReservationList() {
         final Activity activity = getActivity();
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date fromDate = new Date();
@@ -93,11 +92,18 @@ public class ReservationFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(activity, ReservationDetailActivity.class);
                         intent.putExtra("reservationID", reservations.get(position).getId());
+                        intent.putExtra("user", "rental manager");
                         startActivity(intent);
                     }
                 });
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateReservationList();
     }
 
     private void showDialogPick(final TextView timeText) {

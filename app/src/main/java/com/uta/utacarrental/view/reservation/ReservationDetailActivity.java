@@ -44,20 +44,21 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        user = (User) intent.getSerializableExtra("user");
+        String role = intent.getStringExtra("user");
+        if (role != null) {
+            //角色为user时显示修改订单按钮
+            if ("user".equals(role)) {
+                findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
+            }
 
-        //角色为user时显示修改订单按钮
-        if ("user".equals(user.getRole())) {
-            findViewById(R.id.modify_reservation_button).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.modify_reservation_button).setVisibility(View.GONE);
-        }
-
-        //角色为user或rental manager时显示删除订单按钮
-        if ("user".equals(user.getRole()) || "rental manager".equals(user.getRole())) {
-            findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
+            //角色为user或rental manager时显示删除订单按钮
+            if ("user".equals(role) || "rental manager".equals(role)) {
+                findViewById(R.id.delete_reservation_button).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.delete_reservation_button).setVisibility(View.GONE);
+            }
         }
 
         final long reservationID = intent.getLongExtra("reservationID",0);
@@ -99,13 +100,13 @@ public class ReservationDetailActivity extends AppCompatActivity {
             clubMemberTv.setText(String.valueOf(reservation.isMember()));
         }
 
-            Button deleteButton = findViewById(R.id.delete_reservation_button);
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    deleteReservation(reservationID);
-                }
-            });
+        Button deleteButton = findViewById(R.id.delete_reservation_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteReservation(reservationID);
+            }
+        });
 
         }
 
@@ -132,10 +133,8 @@ public class ReservationDetailActivity extends AppCompatActivity {
     }
 
     public void deleteReservation(long reservationID) {
+
         LitePal.delete(Reservation.class, reservationID);
-        Intent intent = new Intent();
-        intent.setClass(this, ReservationFragment.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        finish();
     }
 }
