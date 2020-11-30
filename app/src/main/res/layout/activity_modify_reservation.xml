@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".view.reservation.ReservationDetailActivity">
+    tools:context=".view.reservation.ModifyReservationActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/reservation_detail_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/modify_reservation_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:text="Reservation Number:" />
 
             <TextView
-                android:id="@+id/reservation_number"
+                android:id="@+id/modify_reservation_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1" />
@@ -55,7 +55,7 @@
                 android:text="Car Number:" />
 
             <TextView
-                android:id="@+id/reservation_car_number"
+                android:id="@+id/modify_reservation_car_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1" />
@@ -75,7 +75,7 @@
                 android:text="Car Name:" />
 
             <TextView
-                android:id="@+id/reservation_car_name"
+                android:id="@+id/modify_reservation_car_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Car1" />
@@ -95,7 +95,7 @@
                 android:text="Car Capacity:" />
 
             <TextView
-                android:id="@+id/reservation_car_capacity"
+                android:id="@+id/modify_reservation_car_capacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5" />
@@ -135,7 +135,7 @@
                 android:text="Start Time:" />
 
             <TextView
-                android:id="@+id/reservation_start_time"
+                android:id="@+id/modify_reservation_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:29:10" />
@@ -175,7 +175,7 @@
                 android:text="End Time:" />
 
             <TextView
-                android:id="@+id/reservation_end_time"
+                android:id="@+id/modify_reservation_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:29:10" />
@@ -195,7 +195,7 @@
                 android:text="Reservation Time:" />
 
             <TextView
-                android:id="@+id/reservation_time"
+                android:id="@+id/modify_reservation_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2020/09/10 12:18:20" />
@@ -214,11 +214,14 @@
                 android:layout_marginRight="8dp"
                 android:text="Number of Riders:" />
 
-            <TextView
-                android:id="@+id/reservation_riders_number"
+            <EditText
+                android:id="@+id/modify_number_of_riders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="128" />
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -235,7 +238,7 @@
                 android:text="Total Cost:" />
 
             <TextView
-                android:id="@+id/reservation_total_cost"
+                android:id="@+id/modify_reservation_total_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="128" />
@@ -254,11 +257,12 @@
                 android:layout_marginRight="8dp"
                 android:text="Gps Selected:" />
 
-            <TextView
-                android:id="@+id/reservation_gps_selected"
+            <Spinner
+                android:id="@+id/modify_GPS_selected"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="True" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/yseorno" />
         </LinearLayout>
 
         <LinearLayout
@@ -274,11 +278,12 @@
                 android:layout_marginRight="8dp"
                 android:text="Sirius Selected:" />
 
-            <TextView
-                android:id="@+id/reservation_sirius_selected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="True" />
+            <Spinner
+                android:id="@+id/modify_sirius_xm_selected"
+                android:layout_width="183dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/yseorno" />
         </LinearLayout>
 
         <LinearLayout
@@ -294,11 +299,12 @@
                 android:layout_marginRight="8dp"
                 android:text="On Star Selected:" />
 
-            <TextView
-                android:id="@+id/reservation_onstar_selected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="True" />
+            <Spinner
+                android:id="@+id/modify_on_star_selected"
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/yseorno" />
         </LinearLayout>
 
         <LinearLayout
@@ -315,36 +321,23 @@
                 android:text="Arlington Auto Club Member Status:" />
 
             <TextView
-                android:id="@+id/reservation_club_member"
+                android:id="@+id/modify_reservation_club_member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="True" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/modify_reservation_button"
+            android:id="@+id/modify_save_reservation_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:gravity="center"
-            android:onClick="modify"
+            android:onClick="confirmation"
             android:padding="20dp"
-            android:text="Modify Reservation"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/delete_reservation_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Delete Reservation"
+            android:text="Save"
             android:textAllCaps="false"
             android:textSize="16sp" />
     </LinearLayout>

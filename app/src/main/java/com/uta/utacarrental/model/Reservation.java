@@ -27,6 +27,10 @@ public class Reservation extends LitePalSupport implements Serializable {
     private long car_id;
     private long user_id;
 
+    public long getId() {
+        return id;
+    }
+
     public int getReservationNumber() {
         return reservationNumber;
     }

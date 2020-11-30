@@ -103,7 +103,7 @@ public class UserHomepage extends AppCompatActivity {
                         //没有break,拖动也会执行设置状态的代码
                     case DrawerLayout.STATE_SETTLING:
                         //设置状态
-                        System.out.println("设置");
+                        //System.out.println("设置");
                         ((TextView) findViewById(R.id.username)).setText(user.getUsername());
                         ((TextView) findViewById(R.id.role)).setText(user.getRole());
                         break;
