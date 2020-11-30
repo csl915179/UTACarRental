@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -27,7 +28,6 @@ import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
 import com.uta.utacarrental.view.search_for_car.SearchForCar;
-import com.uta.utacarrental.view.view_available_car.ViewAvailableCar;
 import org.litepal.LitePal;
 
 import java.io.Serializable;
@@ -65,12 +65,16 @@ public class RMHomepage extends AppCompatActivity {
                 R.id.nav_reservations, R.id.nav_profile, R.id.nav_search_car, R.id.nav_view_available_car)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
         intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+        // convey user information to fragment.
+        navController.getGraph().addArgument("username",
+                new NavArgument.Builder().setDefaultValue(user.getUsername()).build());
 
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -81,6 +85,8 @@ public class RMHomepage extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 //抽屉打开后回调
+                ((TextView) drawerView.findViewById(R.id.username)).setText(user.getUsername());
+                ((TextView) drawerView.findViewById(R.id.role)).setText(user.getRole());
             }
 
             @Override

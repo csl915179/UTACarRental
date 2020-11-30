@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -52,12 +53,16 @@ public class AdminHomepage extends AppCompatActivity {
                 R.id.nav_profile,R.id.nav_search_user)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
         intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+        // convey user information to fragment.
+        navController.getGraph().addArgument("username",
+                new NavArgument.Builder().setDefaultValue(user.getUsername()).build());
 
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -68,6 +73,8 @@ public class AdminHomepage extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 //抽屉打开后回调
+                ((TextView) drawerView.findViewById(R.id.username)).setText(user.getUsername());
+                ((TextView) drawerView.findViewById(R.id.role)).setText(user.getRole());
             }
 
             @Override

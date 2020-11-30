@@ -10,12 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavArgument;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 
 import org.litepal.LitePal;
 
 import java.util.List;
+import java.util.Map;
 
 public class ProfileFragment extends Fragment {
 
@@ -55,34 +59,46 @@ public class ProfileFragment extends Fragment {
         clubMemberStatus = root.findViewById(R.id.clubmemberStatus);
 
         // get login User
+        Map<String, NavArgument> map = NavHostFragment.findNavController(this).getGraph().getArguments();
+        final String usernameStr = (String) map.get("username").getDefaultValue();
 
-        profileViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                List<User> userList = LitePal.where("username = ?", "zoe").find(User.class);
-                username.setText(userList.get(0).getUsername());
-                lastname.setText(userList.get(0).getLastname());
-                firstname.setText(userList.get(0).getFirstname());
-                role.setText(userList.get(0).getRole());
-                password.setText(userList.get(0).getPassword());
-                zipcode.setText(userList.get(0).getPhoneoremail());
-                phoneoremail.setText(userList.get(0).getPhoneoremail());
-                address.setText(userList.get(0).getStreet());
-                city.setText(userList.get(0).getCity());
-                utaId.setText(userList.get(0).getUTAID());
-                state.setText(userList.get(0).getState());
-                if (userList.get(0).isIsmember()) {
-                    clubMemberStatus.setText("yes");
-                } else {
-                    clubMemberStatus.setText("no");
+        if (usernameStr!=null && !usernameStr.equals("")) {
+            profileViewModel.getText().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(@Nullable String s) {
+                    List<User> userList = LitePal.where("username = ?", usernameStr).find(User.class);
+
+                    if (!userList.isEmpty()) {
+                        username.setText(userList.get(0).getUsername());
+                        lastname.setText(userList.get(0).getLastname());
+                        firstname.setText(userList.get(0).getFirstname());
+                        role.setText(userList.get(0).getRole());
+                        password.setText(userList.get(0).getPassword());
+                        zipcode.setText(userList.get(0).getPhoneoremail());
+                        phoneoremail.setText(userList.get(0).getPhoneoremail());
+                        address.setText(userList.get(0).getStreet());
+                        city.setText(userList.get(0).getCity());
+                        utaId.setText(userList.get(0).getUTAID());
+                        state.setText(userList.get(0).getState());
+                        if (userList.get(0).isIsmember()) {
+                            clubMemberStatus.setText("yes");
+                        } else {
+                            clubMemberStatus.setText("no");
+                        }
+                        if (userList.get(0).isPrivilege()) {
+                            privilegeStatus.setText("yes");
+                        } else {
+                            privilegeStatus.setText("no");
+                        }
+                    } else {
+                        throw new RuntimeException("[ProfileFragment]search table with NavArgument: "
+                                + userList + " username: " + usernameStr);
+                    }
                 }
-                if (userList.get(0).isPrivilege()) {
-                    privilegeStatus.setText("yes");
-                } else {
-                    privilegeStatus.setText("no");
-                }
-            }
-        });
+            });
+        } else {
+            throw new RuntimeException("ProfileFragment: NavArgument of user information is null.");
+        }
         return root;
     }
 }

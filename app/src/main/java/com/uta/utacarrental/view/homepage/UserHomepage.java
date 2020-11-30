@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
+
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -23,15 +25,10 @@ import android.widget.Toast;
 
 import com.uta.utacarrental.MainActivity;
 import com.uta.utacarrental.R;
-
 import com.uta.utacarrental.model.Car;
-import com.uta.utacarrental.model.Reservation;
-import com.uta.utacarrental.view.SearchForAvailableCar.SearchForAvailableCar;
-
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
 import com.uta.utacarrental.view.UserCarSummary.UserCarSummary;
-import com.uta.utacarrental.view.view_car_details.ViewCarDetails;
 
 import java.util.Date;
 
@@ -64,6 +61,7 @@ public class UserHomepage extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view_user);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -71,12 +69,16 @@ public class UserHomepage extends AppCompatActivity {
                 R.id.nav_view_my_reservations, R.id.nav_profile, R.id.nav_search_available_car, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
         intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+        // convey user information to fragment.
+        navController.getGraph().addArgument("username",
+                new NavArgument.Builder().setDefaultValue(user.getUsername()).build());
 
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -87,6 +89,8 @@ public class UserHomepage extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 //抽屉打开后回调
+                ((TextView) drawerView.findViewById(R.id.username)).setText(user.getUsername());
+                ((TextView) drawerView.findViewById(R.id.role)).setText(user.getRole());
             }
 
             @Override
