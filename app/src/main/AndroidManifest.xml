@@ -51,6 +51,9 @@
             android:name=".view.search_for_car.SearchForCar"
             android:parentActivityName=".view.homepage.RMHomepage" />
         <activity
+                android:name=".view.show_car_details.CarDetails"
+                android:parentActivityName=".view.search_for_car.SearchForCar"/>
+        <activity
             android:name=".view.admin.ViewSelectedUsers"
             android:label="ViewSelectedUsersPage"
             android:theme="@style/AppTheme.NoActionBar"/>
