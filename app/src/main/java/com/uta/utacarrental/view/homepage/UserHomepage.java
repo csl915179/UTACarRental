@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.uta.utacarrental.MainActivity;
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
+import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
 import com.uta.utacarrental.view.UserCarSummary.UserCarSummary;
