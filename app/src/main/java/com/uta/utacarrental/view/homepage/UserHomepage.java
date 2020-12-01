@@ -29,6 +29,9 @@ import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.common.ChangePasswordScreen;
 import com.uta.utacarrental.view.UserCarSummary.UserCarSummary;
+import com.uta.utacarrental.view.view_car_details.ViewCarDetails;
+import com.uta.utacarrental.view.view_my_reservations.ViewMyReservations;
+import com.uta.utacarrental.view.view_my_reservations.ViewMyReservationsFragment;
 
 import java.util.Date;
 
@@ -66,7 +69,7 @@ public class UserHomepage extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_view_my_reservations, R.id.nav_profile, R.id.nav_search_available_car, R.id.nav_share, R.id.nav_send)
+                R.id.nav_profile, R.id.nav_view_my_reservations, R.id.nav_search_available_car, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -150,7 +153,6 @@ public class UserHomepage extends AppCompatActivity {
 
     public void changePassword(MenuItem item){
         //更改intent的目的地和Flags
-        //Intent intent = new Intent();
         Bundle bundle=new Bundle();
         bundle.putSerializable("user", user);
         intent.putExtras(bundle);
@@ -173,6 +175,7 @@ public class UserHomepage extends AppCompatActivity {
 //        startActivity(intent);
 //    }
     public void SearchForAvailableCar(View view){
+        System.out.println(String.valueOf(this.user));
         String starttime = ((TextView)findViewById(R.id.start_time)).getText().toString();
         String endtime = ((TextView)findViewById(R.id.end_time)).getText().toString();
         String capacity = (((TextView)findViewById(R.id.capacity)).getText().toString());
@@ -219,8 +222,17 @@ public class UserHomepage extends AppCompatActivity {
     }
 
 
-    public void ViewMyReservations(View view){
-
+    public void ViewMyReservations(MenuItem item){
+        System.out.println(String.valueOf(this.user.getId()));
+        List<Reservation> ReservationList =  LitePal.where("user_id=?", String.valueOf(this.user.getId())).find(Reservation.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("user", user);
+        Intent intent = new Intent();
+        intent.putExtra("reservation_list",(Serializable)ReservationList);
+        intent.putExtras(bundle);
+        intent.setClass(this, ViewMyReservations.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

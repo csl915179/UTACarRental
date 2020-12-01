@@ -41,7 +41,7 @@ public class ViewAvailableCarFragment extends Fragment {
                 ViewModelProviders.of(this).get(ViewAvailableCarModel.class);
         View root = inflater.inflate(R.layout.fragment_view_available_car, container, false);
 
-        //generateReservations();
+        generateReservations();
         
         starttime = (TextView) root.findViewById(R.id.start_time);
         endtime = (TextView) root.findViewById(R.id.end_time);
@@ -157,6 +157,7 @@ public class ViewAvailableCarFragment extends Fragment {
 
         Reservation reservation1 = new Reservation();
         reservation1.setReservationNumber(2222);
+        reservation1.setUser_id(1);
         Car car1 = LitePal.where("carName = ?","economy").findFirst(Car.class);
         res_list =  car1.getReservationList();
         res_list.add(reservation1);
@@ -177,6 +178,7 @@ public class ViewAvailableCarFragment extends Fragment {
 
         Reservation reservation2 = new Reservation();
         reservation2.setReservationNumber(3333);
+        reservation2.setUser_id(1);
         Car car2 = LitePal.where("carName = ?","compact").findFirst(Car.class);
         res_list =  car2.getReservationList();
         res_list.add(reservation2);

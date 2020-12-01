@@ -50,9 +50,6 @@ public class UserCarListAdapter extends ArrayAdapter {
         TextView weekdayRate = view.findViewById(R.id.car_weekdayRate);
         TextView weekendRate = view.findViewById(R.id.car_weekendRate);
         TextView weekRate = view.findViewById(R.id.car_weekRate);
-//        TextView GPSrate = view.findViewById(R.id.car_GPSrate);
-//        TextView OnStartRate = view.findViewById(R.id.car_OnStartRate);
-//        TextView SiriusXMRate = view.findViewById(R.id.car_SiriusXMRate);
 
 
         carname.setText("Car Name: "+car.getCarName());
@@ -61,9 +58,6 @@ public class UserCarListAdapter extends ArrayAdapter {
         weekdayRate.setText("Car WeekdayRate: "+car.getWeekdayRate());
         weekendRate.setText("Car WeekendRate: "+car.getWeekendRate());
         weekRate.setText("Car WeekRate: "+car.getWeekRate());
-//        GPSrate.setText("Car GPSrate: "+car.getGPSrate());
-//        OnStartRate.setText("Car OnStartRate: "+car.getOnStartRate());
-//        SiriusXMRate.setText("Car SiriusXMRate: "+car.getSiriusXMRate());
 
 
         return view;

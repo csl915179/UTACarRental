@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view">
+      tools:showIn="navigation_view"
+      tools:context=".view.homepage.UserHomepage">
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_profile"
-                android:title="@string/menu_profile"/>
+            android:id="@+id/nav_profile"
+            android:title="@string/menu_profile"/>
         <item
-                android:id="@+id/nav_view_my_reservations"
-                android:title="Reservation"/>
+            android:id="@+id/nav_view_my_reservations"
+            android:title="Reservation"
+            android:onClick="ViewMyReservations" />
         <item
             android:id="@+id/nav_search_available_car"
             android:title="Search Available Car" />
