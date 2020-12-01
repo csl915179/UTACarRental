@@ -1,11 +1,8 @@
 package com.uta.utacarrental.view.reservation;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,18 +18,13 @@ import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.Car;
 import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
-import com.uta.utacarrental.view.homepage.UserHomepage;
-import com.uta.utacarrental.view.view_my_reservations.ViewMyReservationsFragment;
 
 import org.litepal.LitePal;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
 
 public class ModifyReservationActivity extends AppCompatActivity {
 
