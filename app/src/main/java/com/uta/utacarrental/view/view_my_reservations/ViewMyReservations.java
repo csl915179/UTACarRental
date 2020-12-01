@@ -52,6 +52,7 @@ public class ViewMyReservations extends AppCompatActivity {
                 detailIntent.setClass(ThisContext, ReservationDetailActivity.class);
                 detailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(detailIntent);
+                finish();
             }
         });
     }
