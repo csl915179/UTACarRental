@@ -50,11 +50,11 @@ public class RevokeUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (privilage.isChecked()){
-                    user.setPrivilege(true);
+                    userList.get(0).setPrivilege(true);
                 }else {
-                    user.setPrivilege(false);
+                    userList.get(0).setPrivilege(false);
                 }
-                user.updateAll("username = ?",user.getUsername());
+                userList.get(0).updateAll("username = ?",user.getUsername());
 
                 ContentValues values = new ContentValues();
                 values.put("privilege", user.isPrivilege());
