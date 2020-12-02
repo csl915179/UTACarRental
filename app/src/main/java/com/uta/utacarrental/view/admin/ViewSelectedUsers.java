@@ -12,8 +12,6 @@ import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 
 import org.litepal.LitePal;
-
-import java.io.Serializable;
 import java.util.List;
 
 public class ViewSelectedUsers extends AppCompatActivity {
@@ -38,7 +36,11 @@ public class ViewSelectedUsers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_selected_users);
 
-        final List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
+        Bundle bundle = getIntent().getExtras();
+        String un = bundle.getString("username");
+        List<User> userList = LitePal.where("username = ?", un).find(User.class);
+        final User user = userList.get(0);
+
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
         firstname = findViewById(R.id.firstname);
@@ -52,25 +54,27 @@ public class ViewSelectedUsers extends AppCompatActivity {
         state = findViewById(R.id.state);
         privilegeStatus = findViewById(R.id.privilegeStatus);
         clubMemberStatus = findViewById(R.id.clubmemberStatus);
-        editBtn = findViewById(R.id.edtiBtn);
+        editBtn = findViewById(R.id.edit);
 
-        username.setText(userList.get(0).getUsername());
-        lastname.setText(userList.get(0).getLastname());
-        firstname.setText(userList.get(0).getFirstname());
-        role.setText(userList.get(0).getRole());
-        password.setText(userList.get(0).getPassword());
-        zipcode.setText(userList.get(0).getPhoneoremail());
-        phoneoremail.setText(userList.get(0).getPhoneoremail());
-        address.setText(userList.get(0).getStreet());
-        city.setText(userList.get(0).getCity());
-        utaId.setText(userList.get(0).getUTAID());
-        state.setText(userList.get(0).getState());
-        if (userList.get(0).isIsmember()) {
+        Button revoke = findViewById(R.id.revoke);
+
+        username.setText(user.getUsername());
+        lastname.setText(user.getLastname());
+        firstname.setText(user.getFirstname());
+        role.setText(user.getRole());
+        password.setText(user.getPassword());
+        zipcode.setText(user.getPhoneoremail());
+        phoneoremail.setText(user.getPhoneoremail());
+        address.setText(user.getStreet());
+        city.setText(user.getCity());
+        utaId.setText(user.getUTAID());
+        state.setText(user.getState());
+        if (user.isIsmember()) {
             clubMemberStatus.setText("yes");
         } else {
             clubMemberStatus.setText("no");
         }
-        if (userList.get(0).isPrivilege()) {
+        if (user.isPrivilege()) {
             privilegeStatus.setText("yes");
         } else {
             privilegeStatus.setText("no");
@@ -81,8 +85,22 @@ public class ViewSelectedUsers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewSelectedUsers.this, EditSelectedUsersProfile.class);
-                intent.putExtra("user", (Serializable) userList);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                intent.putExtras(bundle);
                 startActivity(intent);
+            }
+        });
+
+        revoke.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                intent.putExtras(bundle);
+                intent.setClass(ViewSelectedUsers.this, RevokeUser.class);
+                startActivity(intent);
+
             }
         });
     }

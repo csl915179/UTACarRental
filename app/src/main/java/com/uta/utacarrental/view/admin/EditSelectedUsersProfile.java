@@ -1,5 +1,6 @@
 package com.uta.utacarrental.view.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
@@ -11,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
-
-import java.util.List;
 
 public class EditSelectedUsersProfile extends AppCompatActivity {
 
@@ -31,13 +30,16 @@ public class EditSelectedUsersProfile extends AppCompatActivity {
     TextView clubMemberStatus;
     Button confirmBtn;
 
+    User user;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_edit_selected_user_profile);
 
         // get User from viewSelectedUser page.
-        List<User> userList = (List<User>)getIntent().getSerializableExtra("user");
+        Intent intent = this.getIntent();
+        user = (User) intent.getSerializableExtra("user");
 
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
@@ -54,23 +56,23 @@ public class EditSelectedUsersProfile extends AppCompatActivity {
         clubMemberStatus = findViewById(R.id.clubmemberStatus);
         confirmBtn = findViewById(R.id.confirmBtn);
 
-        username.setText(userList.get(0).getUsername());
-        lastname.setText(userList.get(0).getLastname());
-        firstname.setText(userList.get(0).getFirstname());
-        role.setText(userList.get(0).getRole());
-        password.setText(userList.get(0).getPassword());
-        zipcode.setText(userList.get(0).getPhoneoremail());
-        phoneoremail.setText(userList.get(0).getPhoneoremail());
-        address.setText(userList.get(0).getStreet());
-        city.setText(userList.get(0).getCity());
-        utaId.setText(userList.get(0).getUTAID());
-        state.setText(userList.get(0).getState());
-        if (userList.get(0).isIsmember()) {
+        username.setText(user.getUsername());
+        lastname.setText(user.getLastname());
+        firstname.setText(user.getFirstname());
+        role.setText(user.getRole());
+        password.setText(user.getPassword());
+        zipcode.setText(user.getPhoneoremail());
+        phoneoremail.setText(user.getPhoneoremail());
+        address.setText(user.getStreet());
+        city.setText(user.getCity());
+        utaId.setText(user.getUTAID());
+        state.setText(user.getState());
+        if (user.isIsmember()) {
             clubMemberStatus.setText("yes");
         } else {
             clubMemberStatus.setText("no");
         }
-        if (userList.get(0).isPrivilege()) {
+        if (user.isPrivilege()) {
             privilegeStatus.setText("yes");
         } else {
             privilegeStatus.setText("no");

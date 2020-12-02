@@ -290,14 +290,24 @@
                 android:layout_weight="1"
                 android:text="" />
         </LinearLayout>
-
         <Button
-            android:id="@+id/edtiBtn"
+            android:id="@+id/edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginTop="30dp"
-            android:text="edit" />
+            android:layout_margin="10dp"
+            android:text="Edit" />
+        <Button
+            android:id="@+id/changeuserrole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Change User Role" />
+
+        <Button
+            android:id="@+id/revoke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Revoke" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
