@@ -2,6 +2,7 @@ package com.uta.utacarrental.view.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
+import com.uta.utacarrental.view.homepage.AdminHomepage;
 
 import org.litepal.LitePal;
 
@@ -40,8 +42,10 @@ public class UpdateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
         Bundle bundle=getIntent().getExtras();
         String un=bundle.getString("username");
+
         final List<User> userList = LitePal.where("username = ?", un).find(User.class);
         final User user = userList.get(0);
         username = findViewById(R.id.username);
@@ -60,7 +64,7 @@ public class UpdateProfile extends AppCompatActivity {
         lastname.setText(userList.get(0).getLastname());
         firstname.setText(userList.get(0).getFirstname());
         role.setText(userList.get(0).getRole());
-        zipcode.setText(userList.get(0).getPhoneoremail());
+        zipcode.setText(userList.get(0).getZipcode());
         phoneoremail.setText(userList.get(0).getPhoneoremail());
         street.setText(userList.get(0).getStreet());
         city.setText(userList.get(0).getCity());
@@ -93,6 +97,21 @@ public class UpdateProfile extends AppCompatActivity {
                 user.setZipcode(Zipcode);
                 user.setIsmember(Ismember);
                 user.updateAll("username = ?",user.getUsername());
+
+                ContentValues values= new ContentValues();
+                values.put("phoneoremail",Phoneoremail);
+                values.put("UTAID", UTAID);
+                values.put("lastname",Phoneoremail);
+                values.put("firstname", UTAID);
+                values.put("street",Street);
+                values.put("city", City);
+                values.put("state",State);
+                values.put("zipcode", Zipcode);
+                values.put("ismember", Ismember);
+                LitePal.updateAll(User.class, values, "username = ?", user.getUsername());
+
+
+
                 Intent intent = new Intent();
                 intent.setClass(UpdateProfile.this, ProfileFragment.class);
                 startActivity(intent);

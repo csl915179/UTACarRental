@@ -88,9 +88,10 @@ public class SearchForUserFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-
+                List<User> userList = LitePal.where("username = ? ",un[0]).find(User.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("username", un[0]);
+                bundle.putSerializable("user", userList.get(0));
                 Intent intent = new Intent();
                 intent.putExtras(bundle);
                 intent.setClass(getActivity(), ViewSelectedUsers.class);

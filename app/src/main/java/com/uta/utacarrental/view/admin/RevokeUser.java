@@ -2,6 +2,7 @@ package com.uta.utacarrental.view.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.uta.utacarrental.R;
+import com.uta.utacarrental.model.Reservation;
 import com.uta.utacarrental.model.User;
 import com.uta.utacarrental.view.profile.ProfileFragment;
 import com.uta.utacarrental.view.profile.UpdateProfile;
@@ -35,8 +37,8 @@ public class RevokeUser extends AppCompatActivity {
         TextView role = findViewById(R.id.role);
         final CheckBox privilage = findViewById(R.id.privilegeStatus);
         Button revoke = findViewById(R.id.revoke);
-        List<User> userList = LitePal.where("username = ? ",user.getUsername()).find(User.class);
-
+        final List<User> userList = LitePal.where("username = ? ",user.getUsername()).find(User.class);
+        user = userList.get(0);
         username.setText(userList.get(0).getUsername());
         role.setText(userList.get(0).getRole());
         if (userList.get(0).isPrivilege()){
@@ -54,10 +56,13 @@ public class RevokeUser extends AppCompatActivity {
                 }
                 user.updateAll("username = ?",user.getUsername());
 
-
+                ContentValues values = new ContentValues();
+                values.put("privilege", user.isPrivilege());
+                LitePal.updateAll(User.class, values, "username = ?", user.getUsername());
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
                 bundle.putString("username", user.getUsername());
+                bundle.putSerializable("user", user);
                 intent.putExtras(bundle);
                 intent.setClass(RevokeUser.this, ViewSelectedUsers.class);
                 startActivity(intent);
