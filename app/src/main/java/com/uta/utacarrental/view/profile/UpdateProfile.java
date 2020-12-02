@@ -1,6 +1,7 @@
 package com.uta.utacarrental.view.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -28,15 +29,15 @@ import static com.uta.utacarrental.view.reservation.ReservationAdapter.inflater;
 public class UpdateProfile extends AppCompatActivity {
 
     private TextView username;
-    private TextView lastname;
-    private TextView firstname;
-    private TextView utaId;
+    private EditText lastname;
+    private EditText firstname;
+    private EditText utaId;
     private TextView role;
-    private TextView zipcode;
-    private TextView phoneoremail;
-    private TextView street;
-    private TextView city;
-    private TextView state;
+    private EditText zipcode;
+    private EditText phoneoremail;
+    private EditText street;
+    private EditText city;
+    private EditText state;
     private CheckBox clubMemberStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +77,19 @@ public class UpdateProfile extends AppCompatActivity {
             clubMemberStatus.setChecked(false);
         }
 
-        final String UTAID=((EditText)findViewById(R.id.utaid)).getText().toString();
-        final String Phoneoremail=((EditText)findViewById(R.id.phoneoremail)).getText().toString();
-        final String Lastname=((EditText)findViewById(R.id.lastname)).getText().toString();
-        final String Firstname=((EditText) findViewById(R.id.firstname)).getText().toString();
-        final String Street=((EditText) findViewById(R.id.street)).getText().toString();
-        final String City=((EditText) findViewById(R.id.city)).getText().toString();
-        final String State=((EditText) findViewById(R.id.state)).getText().toString();
-        final String Zipcode=((EditText) findViewById(R.id.zipcode)).getText().toString();
-        final Boolean Ismember = ((CheckBox) findViewById(R.id.clubmemberStatus)).isChecked();
+
         update.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v) {
+                String UTAID=((EditText)findViewById(R.id.utaid)).getText().toString();
+                String Phoneoremail=((EditText)findViewById(R.id.phoneoremail)).getText().toString();
+                String Lastname=((EditText)findViewById(R.id.lastname)).getText().toString();
+                String Firstname=((EditText) findViewById(R.id.firstname)).getText().toString();
+                String Street=((EditText) findViewById(R.id.street)).getText().toString();
+                String City=((EditText) findViewById(R.id.city)).getText().toString();
+                String State=((EditText) findViewById(R.id.state)).getText().toString();
+                String Zipcode=((EditText) findViewById(R.id.zipcode)).getText().toString();
+                Boolean Ismember = ((CheckBox) findViewById(R.id.clubmemberStatus)).isChecked();
+
                 user.setLastname(Lastname);
                 user.setCity(City);
                 user.setFirstname(Firstname);
@@ -111,9 +114,12 @@ public class UpdateProfile extends AppCompatActivity {
                 LitePal.updateAll(User.class, values, "username = ?", user.getUsername());
 
 
-
                 Intent intent = new Intent();
-                intent.setClass(UpdateProfile.this, ProfileFragment.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                intent.putExtras(bundle);
+                intent.setClass(UpdateProfile.this, ProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
             }
