@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,6 @@ import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 
 public class EditSelectedUsersProfile extends AppCompatActivity {
-
     TextView username;
     TextView lastname;
     TextView firstname;
@@ -33,8 +33,8 @@ public class EditSelectedUsersProfile extends AppCompatActivity {
     User user;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_selected_user_profile);
 
         // get User from viewSelectedUser page.
@@ -104,6 +104,7 @@ public class EditSelectedUsersProfile extends AppCompatActivity {
                     updatedUser.setIsmember(false);
                 }
                 updatedUser.updateAll("username = ?", username.getText().toString());
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
             }
         });
     }

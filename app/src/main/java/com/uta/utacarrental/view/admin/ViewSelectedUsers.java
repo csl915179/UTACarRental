@@ -84,10 +84,11 @@ public class ViewSelectedUsers extends AppCompatActivity {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewSelectedUsers.this, EditSelectedUsersProfile.class);
+                Intent intent = new Intent();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);
                 intent.putExtras(bundle);
+                intent.setClass(ViewSelectedUsers.this, EditSelectedUsersProfile.class);
                 startActivity(intent);
             }
         });
