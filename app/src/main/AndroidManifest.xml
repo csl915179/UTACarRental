@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.view_my_reservations.ViewMyReservations"></activity>
+        <activity android:name=".view.admin.RevokeUser"></activity>
+        <activity android:name=".view.profile.UpdateProfile" />
+        <activity android:name=".view.view_my_reservations.ViewMyReservations" />
         <activity android:name=".view.reservation.ModifyReservationActivity" />
         <activity android:name=".view.UserCarSummary.UserCarSummary" />
         <activity android:name=".view.view_car_details.ViewCarDetails" />
@@ -51,12 +53,12 @@
             android:name=".view.search_for_car.SearchForCar"
             android:parentActivityName=".view.homepage.RMHomepage" />
         <activity
-                android:name=".view.show_car_details.CarDetails"
-                android:parentActivityName=".view.search_for_car.SearchForCar"/>
+            android:name=".view.show_car_details.CarDetails"
+            android:parentActivityName=".view.search_for_car.SearchForCar" />
         <activity
             android:name=".view.admin.ViewSelectedUsers"
             android:label="ViewSelectedUsersPage"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

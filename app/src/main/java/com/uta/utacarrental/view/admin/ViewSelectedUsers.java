@@ -2,11 +2,16 @@ package com.uta.utacarrental.view.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
+import com.uta.utacarrental.view.profile.ProfileFragment;
+import com.uta.utacarrental.view.profile.UpdateProfile;
 
 import org.litepal.LitePal;
 
@@ -32,10 +37,13 @@ public class ViewSelectedUsers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_selected_users);
-
-        List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
-        userList.get(0).setStreet("zhichunRoad");
-        userList.get(0).updateAll("username = ?", "jeffGomez");
+        Bundle bundle=getIntent().getExtras();
+        String un=bundle.getString("username");
+        //List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
+        List<User> userList = LitePal.where("username = ?", un).find(User.class);
+        final User user=userList.get(0);
+        //userList.get(0).setStreet("zhichunRoad");
+        //userList.get(0).updateAll("username = ?", "jeffGomez");
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
         firstname = findViewById(R.id.firstname);
@@ -49,7 +57,7 @@ public class ViewSelectedUsers extends AppCompatActivity {
         state = findViewById(R.id.state);
         privilegeStatus = findViewById(R.id.privilegeStatus);
         clubMemberStatus = findViewById(R.id.clubmemberStatus);
-
+        Button revoke = findViewById(R.id.revoke);
         username.setText(userList.get(0).getUsername());
         lastname.setText(userList.get(0).getLastname());
         firstname.setText(userList.get(0).getFirstname());
@@ -71,5 +79,20 @@ public class ViewSelectedUsers extends AppCompatActivity {
         } else {
             privilegeStatus.setText("no");
         }
+
+        revoke.setOnClickListener(new Button.OnClickListener(){
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                intent.putExtras(bundle);
+                intent.setClass(ViewSelectedUsers.this, RevokeUser.class);
+                startActivity(intent);
+
+            }
+
+        });
     }
 }
