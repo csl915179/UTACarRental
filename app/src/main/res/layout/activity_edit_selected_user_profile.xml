@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.admin.ViewSelectedUsers">
+    tools:context=".view.admin.EditSelectedUsersProfile">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="100px"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -31,17 +31,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Username" />
-
-            <TextView
+            <EditText
                 android:id="@+id/username"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -51,17 +52,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/lastname" />
-
-            <TextView
+            <EditText
                 android:id="@+id/lastname"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -72,17 +74,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/firstname" />
-
-            <TextView
+            <EditText
                 android:id="@+id/firstname"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -93,17 +96,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/role" />
-
-            <TextView
+            <EditText
                 android:id="@+id/role"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -114,17 +118,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/UTAID" />
-
-            <TextView
+            <EditText
                 android:id="@+id/utaid"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -135,17 +140,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Password" />
-
-            <TextView
+            <EditText
                 android:id="@+id/password"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPassword"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -156,17 +162,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/zipcode" />
-
-            <TextView
+            <EditText
                 android:id="@+id/zipcode"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -177,17 +184,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/contact" />
-
-            <TextView
+            <EditText
                 android:id="@+id/phoneoremail"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -198,17 +206,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/street" />
-
-            <TextView
+            <EditText
                 android:id="@+id/address"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -219,17 +228,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/city" />
-
-            <TextView
+            <EditText
                 android:id="@+id/city"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -240,17 +250,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/state" />
-
-            <TextView
+            <EditText
                 android:id="@+id/state"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -261,17 +272,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Privilege" />
-
-            <TextView
+            <EditText
                 android:id="@+id/privilegeStatus"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="horizontal">
@@ -282,22 +294,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Club Member" />
-
-            <TextView
+            <EditText
                 android:id="@+id/clubmemberStatus"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/edtiBtn"
+            android:id="@+id/confirmBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginTop="30dp"
-            android:text="edit" />
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:text="Confirm" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

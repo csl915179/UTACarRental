@@ -54,6 +54,11 @@
             android:name=".view.admin.ViewSelectedUsers"
             android:label="ViewSelectedUsersPage"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".view.admin.EditSelectedUsersProfile"
+            android:label="EditSelectedUsersProfilePage"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>

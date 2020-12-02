@@ -23,6 +23,7 @@
     <string name="contact">Phone or Email</string>
     <string name="lastname">Last Name</string>
     <string name="firstname">First Name</string>
+    <string name="role">Role</string>
     <string name="street">Street Address</string>
     <string name="city">City</string>
     <string name="state">State</string>

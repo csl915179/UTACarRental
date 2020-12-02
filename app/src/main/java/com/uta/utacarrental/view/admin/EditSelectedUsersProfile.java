@@ -1,22 +1,20 @@
 package com.uta.utacarrental.view.admin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 
-import org.litepal.LitePal;
-
-import java.io.Serializable;
 import java.util.List;
 
-public class ViewSelectedUsers extends AppCompatActivity {
+public class EditSelectedUsersProfile extends AppCompatActivity {
 
     TextView username;
     TextView lastname;
@@ -31,14 +29,16 @@ public class ViewSelectedUsers extends AppCompatActivity {
     TextView state;
     TextView privilegeStatus;
     TextView clubMemberStatus;
-    Button editBtn;
+    Button confirmBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_selected_users);
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        setContentView(R.layout.activity_edit_selected_user_profile);
 
-        final List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
+        // get User from viewSelectedUser page.
+        List<User> userList = (List<User>)getIntent().getSerializableExtra("user");
+
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
         firstname = findViewById(R.id.firstname);
@@ -52,7 +52,7 @@ public class ViewSelectedUsers extends AppCompatActivity {
         state = findViewById(R.id.state);
         privilegeStatus = findViewById(R.id.privilegeStatus);
         clubMemberStatus = findViewById(R.id.clubmemberStatus);
-        editBtn = findViewById(R.id.edtiBtn);
+        confirmBtn = findViewById(R.id.confirmBtn);
 
         username.setText(userList.get(0).getUsername());
         lastname.setText(userList.get(0).getLastname());
@@ -76,13 +76,32 @@ public class ViewSelectedUsers extends AppCompatActivity {
             privilegeStatus.setText("no");
         }
 
-        // jump to edit page.
-        editBtn.setOnClickListener(new View.OnClickListener() {
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewSelectedUsers.this, EditSelectedUsersProfile.class);
-                intent.putExtra("user", (Serializable) userList);
-                startActivity(intent);
+                User updatedUser = new User();
+                updatedUser.setUsername(username.getText().toString());
+                updatedUser.setLastname(lastname.getText().toString());
+                updatedUser.setFirstname(firstname.getText().toString());
+                updatedUser.setRole(role.getText().toString());
+                updatedUser.setPassword(password.getText().toString());
+                updatedUser.setZipcode(zipcode.getText().toString());
+                updatedUser.setPhoneoremail(phoneoremail.getText().toString());
+                updatedUser.setStreet(address.getText().toString());
+                updatedUser.setCity(city.getText().toString());
+                updatedUser.setUTAID(utaId.getText().toString());
+                updatedUser.setState(state.getText().toString());
+                if (privilegeStatus.getText().toString().equals("yes")) {
+                    updatedUser.setPrivilege(true);
+                } else {
+                    updatedUser.setPrivilege(false);
+                }
+                if (clubMemberStatus.getText().toString().equals("yes")) {
+                    updatedUser.setIsmember(true);
+                } else {
+                    updatedUser.setIsmember(false);
+                }
+                updatedUser.updateAll("username = ?", username.getText().toString());
             }
         });
     }
