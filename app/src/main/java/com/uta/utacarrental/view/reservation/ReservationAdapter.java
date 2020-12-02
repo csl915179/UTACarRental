@@ -23,7 +23,7 @@ public class ReservationAdapter  extends BaseAdapter {
 
     Context context;
     List<Reservation> data;
-    private static LayoutInflater inflater = null;
+    public static LayoutInflater inflater = null;
 
     public ReservationAdapter(Context context, List<Reservation> data) {
         this.context = context;

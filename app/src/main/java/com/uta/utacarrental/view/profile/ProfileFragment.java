@@ -1,9 +1,11 @@
 package com.uta.utacarrental.view.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
+import com.uta.utacarrental.view.admin.ViewSelectedUsers;
 
 import org.litepal.LitePal;
 
@@ -61,9 +64,9 @@ public class ProfileFragment extends Fragment {
         // get login User
         Map<String, NavArgument> map = NavHostFragment.findNavController(this).getGraph().getArguments();
         final String usernameStr = (String) map.get("username").getDefaultValue();
-
+        final Button update = root.findViewById(R.id.button);
         if (usernameStr!=null && !usernameStr.equals("")) {
-            profileViewModel.getText().observe(this, new Observer<String>() {
+            profileViewModel.getText().observe(getActivity(), new Observer<String>() {
                 @Override
                 public void onChanged(@Nullable String s) {
                     List<User> userList = LitePal.where("username = ?", usernameStr).find(User.class);
@@ -99,6 +102,19 @@ public class ProfileFragment extends Fragment {
         } else {
             throw new RuntimeException("ProfileFragment: NavArgument of user information is null.");
         }
+        //创建监听
+        update.setOnClickListener(new Button.OnClickListener(){
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("username", usernameStr);
+                Intent intent = new Intent();
+                intent.putExtras(bundle);
+                intent.setClass(getActivity(), UpdateProfile.class);
+                startActivity(intent);
+
+            }
+
+        });
         return root;
     }
 }
