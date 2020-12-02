@@ -35,8 +35,8 @@ public class RevokeUser extends AppCompatActivity {
         TextView role = findViewById(R.id.role);
         final CheckBox privilage = findViewById(R.id.privilegeStatus);
         Button revoke = findViewById(R.id.revoke);
-        List<User> userList = LitePal.where("username = ? ",user.getUsername()).find(User.class);
-
+        final List<User> userList = LitePal.where("username = ? ",user.getUsername()).find(User.class);
+        user = userList.get(0);
         username.setText(userList.get(0).getUsername());
         role.setText(userList.get(0).getRole());
         if (userList.get(0).isPrivilege()){
@@ -48,11 +48,11 @@ public class RevokeUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (privilage.isChecked()){
-                    user.setPrivilege(true);
+                    userList.get(0).setPrivilege(true);
                 }else {
-                    user.setPrivilege(false);
+                    userList.get(0).setPrivilege(false);
                 }
-                user.updateAll("username = ?",user.getUsername());
+                userList.get(0).updateAll("username = ?",user.getUsername());
 
 
                 Intent intent = new Intent();
