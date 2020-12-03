@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavArgument;
@@ -111,7 +113,6 @@ public class ProfileFragment extends Fragment {
                 intent.putExtras(bundle);
                 intent.setClass(getActivity(), UpdateProfile.class);
                 startActivity(intent);
-
             }
 
         });

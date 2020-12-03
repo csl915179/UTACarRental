@@ -29,6 +29,7 @@ public class ViewSelectedUsers extends AppCompatActivity {
     TextView state;
     TextView privilegeStatus;
     TextView clubMemberStatus;
+    User user;
     Button editBtn;
 
     @Override
@@ -36,10 +37,17 @@ public class ViewSelectedUsers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_selected_users);
 
-        Bundle bundle = getIntent().getExtras();
-        String un = bundle.getString("username");
+
+        Intent intent = this.getIntent();
+        user = (User) intent.getSerializableExtra("user");
+        Bundle bundle=getIntent().getExtras();
+        String un=bundle.getString("username");
+        List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
         List<User> userList = LitePal.where("username = ?", un).find(User.class);
-        final User user = userList.get(0);
+        final User user=userList.get(0);
+        userList.get(0).setStreet("zhichunRoad");
+        userList.get(0).updateAll("username = ?", "jeffGomez");
+       
 
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
