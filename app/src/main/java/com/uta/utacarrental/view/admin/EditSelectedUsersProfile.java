@@ -1,21 +1,20 @@
 package com.uta.utacarrental.view.admin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.uta.utacarrental.R;
 import com.uta.utacarrental.model.User;
 
-import org.litepal.LitePal;
-import java.util.List;
-
-public class ViewSelectedUsers extends AppCompatActivity {
-
+public class EditSelectedUsersProfile extends AppCompatActivity {
     TextView username;
     TextView lastname;
     TextView firstname;
@@ -29,25 +28,18 @@ public class ViewSelectedUsers extends AppCompatActivity {
     TextView state;
     TextView privilegeStatus;
     TextView clubMemberStatus;
+    Button confirmBtn;
+
     User user;
-    Button editBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_selected_users);
+        setContentView(R.layout.activity_edit_selected_user_profile);
 
-
+        // get User from viewSelectedUser page.
         Intent intent = this.getIntent();
         user = (User) intent.getSerializableExtra("user");
-        Bundle bundle=getIntent().getExtras();
-        String un=bundle.getString("username");
-        List<User> userList = LitePal.where("username = ?", "jeffGomez").find(User.class);
-        List<User> userList = LitePal.where("username = ?", un).find(User.class);
-        final User user=userList.get(0);
-        userList.get(0).setStreet("zhichunRoad");
-        userList.get(0).updateAll("username = ?", "jeffGomez");
-       
 
         username = findViewById(R.id.username);
         lastname = findViewById(R.id.lastname);
@@ -62,9 +54,7 @@ public class ViewSelectedUsers extends AppCompatActivity {
         state = findViewById(R.id.state);
         privilegeStatus = findViewById(R.id.privilegeStatus);
         clubMemberStatus = findViewById(R.id.clubmemberStatus);
-        editBtn = findViewById(R.id.edit);
-
-        Button revoke = findViewById(R.id.revoke);
+        confirmBtn = findViewById(R.id.confirmBtn);
 
         username.setText(user.getUsername());
         lastname.setText(user.getLastname());
@@ -88,28 +78,33 @@ public class ViewSelectedUsers extends AppCompatActivity {
             privilegeStatus.setText("no");
         }
 
-        // jump to edit page.
-        editBtn.setOnClickListener(new View.OnClickListener() {
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("user", user);
-                intent.putExtras(bundle);
-                intent.setClass(ViewSelectedUsers.this, EditSelectedUsersProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        revoke.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("user", user);
-                intent.putExtras(bundle);
-                intent.setClass(ViewSelectedUsers.this, RevokeUser.class);
-                startActivity(intent);
-
+                User updatedUser = new User();
+                updatedUser.setUsername(username.getText().toString());
+                updatedUser.setLastname(lastname.getText().toString());
+                updatedUser.setFirstname(firstname.getText().toString());
+                updatedUser.setRole(role.getText().toString());
+                updatedUser.setPassword(password.getText().toString());
+                updatedUser.setZipcode(zipcode.getText().toString());
+                updatedUser.setPhoneoremail(phoneoremail.getText().toString());
+                updatedUser.setStreet(address.getText().toString());
+                updatedUser.setCity(city.getText().toString());
+                updatedUser.setUTAID(utaId.getText().toString());
+                updatedUser.setState(state.getText().toString());
+                if (privilegeStatus.getText().toString().equals("yes")) {
+                    updatedUser.setPrivilege(true);
+                } else {
+                    updatedUser.setPrivilege(false);
+                }
+                if (clubMemberStatus.getText().toString().equals("yes")) {
+                    updatedUser.setIsmember(true);
+                } else {
+                    updatedUser.setIsmember(false);
+                }
+                updatedUser.updateAll("username = ?", username.getText().toString());
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
             }
         });
     }

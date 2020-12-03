@@ -92,7 +92,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Role" />
+                android:text="@string/role" />
 
             <TextView
                 android:id="@+id/role"
@@ -290,21 +290,12 @@
                 android:layout_weight="1"
                 android:text="" />
         </LinearLayout>
-
-
         <Button
             android:id="@+id/edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Edit" />
-        <Button
-            android:id="@+id/changeuserrole"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Change User Role" />
-
         <Button
             android:id="@+id/revoke"
             android:layout_width="match_parent"
